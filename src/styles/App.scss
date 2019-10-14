@@ -12,13 +12,15 @@
 }
 
 .header {
-  padding: 4rem;
+  padding: 1rem;
+  min-height: 8vh;
   background-color: #c5cabb;
   grid-column: full-start / full-end;
 }
 
 .main {
-  min-height: calc(100vh - (9.6rem * 2));
+  // min-height: calc(100vh - (9.6rem * 2));
+  min-height: 80vh;
   padding: 2rem 2rem;
   background-color: #fff;
   grid-column: center-start / center-end;
@@ -29,7 +31,8 @@
 }
 
 .footer {
-  padding: 4rem;
+  padding: 1rem;
+  min-height: 7.8vh;
   background-color: #9ea198;
   grid-column: full-start / full-end;
 }

@@ -11,26 +11,31 @@ class DirectoryMenu extends Component {
         {
           title: "hats",
           imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
+          linkUrl: "hats",
           id: 1
         },
         {
           title: "jackets",
           imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
+          linkUrl: "hats",
           id: 2
         },
         {
           title: "sneakers",
           imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
+          linkUrl: "hats",
           id: 3
         },
         {
           title: "women",
           imageUrl: "https://i.ibb.co/GCCdy8t/women.png",
+          linkUrl: "hats",
           id: 4
         },
         {
           title: "men",
           imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
+          linkUrl: "hats",
           id: 5
         }
       ]
@@ -42,13 +47,12 @@ class DirectoryMenu extends Component {
     return (
       <div className="directory__menu">
         {this.state.sections.map(
-          ({ id, title, imageUrl }) => {
+          ({ id, ...sectionProps }) => {
             return (
               <MenuItem
                 key={id}
                 itemStyle={`item--${id}`}
-                title={title}
-                img={imageUrl}
+                {...sectionProps}
               />
             );
           }

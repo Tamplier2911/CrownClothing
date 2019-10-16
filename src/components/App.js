@@ -1,8 +1,9 @@
-import "../styles/App.scss";
+import "./App.scss";
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
 // import Layout from "./layout/Layout";
-import Homepage from "../pages/Homepage/Homepage";
+import HomePage from "../pages/HomePage/HomePage";
+import ShopPage from "../pages/ShopPage/ShopPage";
 
 class App extends Component {
   constructor(props) {
@@ -29,7 +30,8 @@ class App extends Component {
         <div className="header">Header</div>
         <div className="main">
           <Switch>
-            <Route exact path="/" component={Homepage} />
+            <Route exact path="/" component={HomePage} />
+            <Route path="/shop" component={ShopPage} />
             <Route path="/hats" component={this.HatsPage} />
           </Switch>
         </div>

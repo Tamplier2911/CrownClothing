@@ -1,0 +1,73 @@
+.collectionItem {
+  width: 100%;
+  height: 100%;
+
+  &:hover .collectionItem__link {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    height: 35rem;
+    position: relative;
+
+    &:hover .collectionItem__image {
+      filter: brightness(120%);
+      //   filter: brightness(80%);
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+
+    transition: filter 0.3s;
+  }
+
+  &__link {
+    transform: translate(-50%, 0%);
+    transition: background-color 0.3s, color 0.3s,
+      visibility 0.5s, opacity 0.5s;
+
+    &:link,
+    &:visited {
+      position: absolute;
+      bottom: 10%;
+      left: 50%;
+      width: 19rem;
+
+      text-decoration: none;
+      text-transform: uppercase;
+
+      padding: 1.5rem 6rem;
+      color: #333;
+      background-color: #ffffffd5;
+
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &:hover,
+    &:active {
+      color: #fff;
+      background-color: #000000b2;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    margin-top: 0.5rem;
+  }
+
+  &__name {
+    font-size: 1.8rem;
+    margin-right: auto;
+  }
+
+  &__price {
+    font-size: 1.8rem;
+  }
+}

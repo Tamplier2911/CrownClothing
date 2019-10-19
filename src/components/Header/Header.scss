@@ -1,0 +1,59 @@
+.header {
+  padding: 1rem;
+  min-height: 8vh;
+  grid-column: center-start / center-end;
+
+  text-transform: uppercase;
+
+  display: flex;
+
+  &__logowrapper {
+    margin-right: auto;
+    margin-left: 1rem;
+    align-self: center;
+    text-decoration: none;
+  }
+
+  &__logo {
+    // width: 2rem;
+    // height: 2rem;
+  }
+
+  &__nav {
+    display: flex;
+  }
+
+  &__ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+  }
+
+  &__li {
+    margin-right: 2rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    display: inline-block;
+    transition: color 0.3s, transform 0.3s;
+
+    &:link,
+    &:visited {
+      color: var(--cl-font);
+      font-size: 2rem;
+    }
+
+    &:hover,
+    &:active {
+      color: #b4b4b4;
+      transform: scale(1.2);
+    }
+  }
+
+  &__cart {
+    font-size: 2rem;
+    align-self: center;
+    margin-right: 1rem;
+  }
+}

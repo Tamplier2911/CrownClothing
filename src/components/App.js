@@ -1,9 +1,12 @@
 import "./App.scss";
 import React, { Component } from "react";
 import { Switch, Route } from "react-router-dom";
-// import Layout from "./layout/Layout";
+
+import Header from "../components/Header/Header";
+
 import HomePage from "../pages/HomePage/HomePage";
 import ShopPage from "../pages/ShopPage/ShopPage";
+import SignInPage from "../pages/SignInPage/SignInPage";
 
 class App extends Component {
   constructor(props) {
@@ -27,11 +30,12 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-        <div className="header">Header</div>
+        <Header />
         <div className="main">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
+            <Route path="/sign-in" component={SignInPage} />
             <Route path="/hats" component={this.HatsPage} />
           </Switch>
         </div>

@@ -27,7 +27,8 @@ const SHOP_DATA = [
       {
         id: 4,
         name: "Grey Brim",
-        imageUrl: "https://i.ibb.co/RjBLWxB/grey-brim.png",
+        // "https://i.ibb.co/RjBLWxB/grey-brim.png",
+        imageUrl: "https://bit.ly/2VUECiq",
         price: 25
       },
       {
@@ -91,9 +92,11 @@ const SHOP_DATA = [
       },
       {
         id: 4,
-        name: "Nike White AirForce",
+        // "Nike White AirForce"
+        name: "Nike AirMax",
         imageUrl:
-          "https://i.ibb.co/1RcFPk0/white-nike-high-tops.png",
+          // "https://i.ibb.co/1RcFPk0/white-nike-high-tops.png",
+          "https://bit.ly/2Mr8ik6",
         price: 160
       },
       {
@@ -151,9 +154,11 @@ const SHOP_DATA = [
       },
       {
         id: 4,
-        name: "Brown Shearling",
+        name: "Jeans Jacket Donut",
+        // "Brown Shearling"
         imageUrl:
-          "https://i.ibb.co/s96FpdP/brown-shearling.png",
+          // "https://i.ibb.co/s96FpdP/brown-shearling.png",
+          "https://bit.ly/2J1zkMF",
         price: 165
       },
       {
@@ -192,9 +197,11 @@ const SHOP_DATA = [
       },
       {
         id: 4,
-        name: "Red Dots Dress",
+        name: "Heavenly Dress",
+        // "Red Dots Dress"
         imageUrl:
-          "https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png",
+          // "https://i.ibb.co/N3BN1bh/red-polka-dot-dress.png",
+          "https://bit.ly/2BmkU5C",
         price: 80
       },
       {
@@ -246,8 +253,9 @@ const SHOP_DATA = [
       },
       {
         id: 4,
-        name: "Pink T-shirt",
-        imageUrl: "https://i.ibb.co/RvwnBL8/pink-shirt.png",
+        name: "Pink Man Jacket",
+        //"https://i.ibb.co/RvwnBL8/pink-shirt.png",
+        imageUrl: "https://bit.ly/35Ewg2F",
         price: 25
       },
       {

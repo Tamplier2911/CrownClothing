@@ -1,0 +1,69 @@
+@mixin shrinkLable {
+  top: -1rem;
+  font-size: 1.5rem;
+  color: var(--cl-font);
+}
+
+.input__wrapper {
+  position: relative;
+  grid-column: 1/-1;
+}
+
+.form__input {
+  color: var(--cl-font);
+  font-family: var(--font-reg);
+  font-size: 1.8rem;
+  letter-spacing: 0.1rem;
+
+  width: 100%;
+  padding: 1rem 1rem 1rem 0rem;
+  background-color: var(--white);
+  border: none;
+  border-bottom: 0.2rem solid var(--cl-grey);
+
+  &:-webkit-autofill,
+  &:-webkit-autofill:hover,
+  &:-webkit-autofill:focus,
+  &:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px white inset !important;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+    outline: none;
+  }
+
+  &:hover {
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &:focus ~ .form__label {
+    @include shrinkLable();
+  }
+
+  &:invalid {
+    //   border-bottom: 0.2rem solid var(--cl-danger);
+    box-shadow: none;
+  }
+
+  //   &:invalid ~ .form__label {
+  //     color: red;
+  //   }
+}
+
+.form__label {
+  position: absolute;
+  color: var(--cl-grey);
+  font-size: 2rem;
+  top: 1.5rem;
+  left: 0;
+
+  transition: font-size 0.3s, top 0.3s;
+}
+
+.shrink {
+  @include shrinkLable();
+}

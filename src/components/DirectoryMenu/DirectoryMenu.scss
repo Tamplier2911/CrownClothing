@@ -1,9 +1,9 @@
 .directory__menu {
   // height: 100%;
-  height: 80vh;
+  min-height: 80vh;
   display: grid;
   // change to fixed width or to scalable
-  grid-template-columns: repeat(6, minmax(12rem, 1fr));
+  grid-template-columns: repeat(6, 1fr);
   // grid-template-rows: ;
   //   calc(((100vh - (9.6rem * 2) - 10rem) / 5) * 2)
   //   calc(((100vh - (9.6rem * 2) - 10rem) / 5) * 3);

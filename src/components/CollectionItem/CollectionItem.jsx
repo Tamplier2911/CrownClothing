@@ -2,7 +2,7 @@ import "./CollectionItem.scss";
 import React from "react";
 
 const CollectionItem = ({ id, imageUrl, name, price }) => {
-  console.log(id);
+  // console.log(id);
   return (
     <figure className={`collectionItem check-${id}`}>
       <div className="collectionItem__wrapper">

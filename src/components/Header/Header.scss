@@ -34,9 +34,12 @@
   }
 
   &__link {
+    cursor: pointer;
     text-decoration: none;
     display: inline-block;
     transition: color 0.3s, transform 0.3s;
+    color: var(--cl-font);
+    font-size: 2rem;
 
     &:link,
     &:visited {

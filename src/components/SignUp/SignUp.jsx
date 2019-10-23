@@ -1,5 +1,6 @@
 import "./SignUp.scss";
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
@@ -51,9 +52,17 @@ class SignUp extends Component {
         displayName
       });
 
-      this.setState({ email: "", password: "" });
+      this.setState({
+        displayName: "",
+        email: "",
+        password: "",
+        confirmPassword: ""
+      });
+
+      this.props.history.push("/");
     } catch (err) {
-      console.log(err.message);
+      // Implement meaningful error handler.
+      alert(err.message);
     }
   };
 
@@ -120,16 +129,10 @@ class SignUp extends Component {
           >
             Sign Up
           </CustomButton>
-          <CustomButton
-            styles="signUp__submit"
-            type="submit"
-          >
-            Sign Up
-          </CustomButton>
         </form>
       </div>
     );
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);

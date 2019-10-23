@@ -43,7 +43,7 @@ class App extends Component {
           this.setState({ currentUser: userAuth });
         }
         // this.setState({ currentUser: userAuth });
-        console.log(userAuth);
+        // console.log(userAuth);
       }
     );
   }
@@ -63,6 +63,7 @@ class App extends Component {
   };
 
   render() {
+    console.log(this.state);
     return (
       <div className="container">
         <Header currentUser={this.state.currentUser} />
@@ -74,7 +75,7 @@ class App extends Component {
             <Route path="/hats" component={this.HatsPage} />
           </Switch>
         </div>
-        <div className="footer">Footer</div>
+        <div className="footer"></div>
       </div>
     );
   }

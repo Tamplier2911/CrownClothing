@@ -1,10 +1,14 @@
 import "./SignIn.scss";
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
-import { signInWithGoogle } from "../../firebase/firebase.utils";
+import {
+  auth,
+  signInWithGoogle
+} from "../../firebase/firebase.utils";
 
 class SignIn extends Component {
   constructor(props) {
@@ -20,9 +24,22 @@ class SignIn extends Component {
   componentDidUpdate() {}
   componentWillUnmount() {}
 
-  onSubmit = e => {
+  onSubmit = async e => {
     e.preventDefault();
-    this.setState({ email: "", password: "" });
+    const { email, password } = this.state;
+    try {
+      await auth.signInWithEmailAndPassword(
+        email,
+        password
+      );
+
+      this.setState({ email: "", password: "" });
+
+      this.props.history.push("/");
+    } catch (err) {
+      // Implement meaningful error handler.
+      alert(err.message);
+    }
   };
 
   onInputChange = e => {
@@ -70,7 +87,7 @@ class SignIn extends Component {
 
           <CustomButton
             styles="signIn__button"
-            onClick={signInWithGoogle}
+            onClick={() => signInWithGoogle(this.props)}
           >
             Signn In With Google
           </CustomButton>
@@ -80,4 +97,4 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+export default withRouter(SignIn);

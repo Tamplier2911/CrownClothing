@@ -75,7 +75,7 @@ class App extends Component {
             <Route path="/hats" component={this.HatsPage} />
           </Switch>
         </div>
-        <div className="footer"></div>
+        <div className="footer">Footer</div>
       </div>
     );
   }

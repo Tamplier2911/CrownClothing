@@ -1,6 +1,6 @@
 import "./SignIn.scss";
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
 
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
@@ -35,7 +35,7 @@ class SignIn extends Component {
 
       this.setState({ email: "", password: "" });
 
-      this.props.history.push("/");
+      // this.props.history.push("/");
     } catch (err) {
       // Implement meaningful error handler.
       alert(err.message);
@@ -97,4 +97,5 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(SignIn);
+// export default withRouter(SignIn);
+export default SignIn;

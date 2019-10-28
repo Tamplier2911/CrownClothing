@@ -1,137 +1,18 @@
 import "./CartDropdown.scss";
 import React from "react";
 
+import { connect } from "react-redux";
+
+import CartItem from "../CartItem/CartItem";
 import CustomButton from "../CustomButton/CustomButton";
 
-const CartDropdown = () => {
+const CartDropdown = ({ cartItems }) => {
   return (
     <div className="cartDropdown">
       <div className="cartDropdown__items">
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
-
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
-
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
-
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
-
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
-
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
-
-        <div className="cartDropdown__item">
-          <div className="cartDropdown__item--imgWrapper">
-            <img
-              className="cartDropdown__item--img"
-              alt="test"
-              src="https://bit.ly/2okzOX3"
-            ></img>
-          </div>
-          <div className="cartDropdown__item--textWrapper">
-            <span className="cartDropdown__item--title">
-              Brown Cowboy
-            </span>
-            <span className="cartDropdown__item--price">
-              1 x $35
-            </span>
-          </div>
-        </div>
+        {cartItems.map(cartItem => (
+          <CartItem key={cartItem.id} item={cartItem} />
+        ))}
       </div>
       <div className="cartDropdown__btnWrapper">
         <CustomButton
@@ -145,4 +26,8 @@ const CartDropdown = () => {
   );
 };
 
-export default CartDropdown;
+const mapStateToProps = state => ({
+  cartItems: state.cartDropdown.cartItems
+});
+
+export default connect(mapStateToProps)(CartDropdown);

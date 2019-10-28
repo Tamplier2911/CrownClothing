@@ -1,0 +1,29 @@
+.cartItem {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+  // grid-template-rows: min-content;
+  grid-column-gap: 2rem;
+
+  // height: 10rem;
+
+  &__imgWrapper {
+    width: 7rem;
+    height: 7rem;
+  }
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__textWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  &__title {
+    margin-bottom: 1rem;
+  }
+  &__price {
+  }
+}

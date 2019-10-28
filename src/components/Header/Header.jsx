@@ -9,7 +9,7 @@ import { ReactComponent as Logo } from "../../images/svg/crown.svg";
 import { auth } from "../../firebase/firebase.utils";
 import { connect } from "react-redux";
 
-const Header = ({ currentUser }) => {
+const Header = ({ currentUser, cartDropdown }) => {
   return (
     <div className="header">
       <Link className="header__logowrapper" to="/">
@@ -45,13 +45,17 @@ const Header = ({ currentUser }) => {
         </ul>
       </nav>
       <Cart />
-      <CartDropdown />
+      {cartDropdown ? null : <CartDropdown />}
     </div>
   );
 };
 
-const mapStateToProps = state => ({
-  currentUser: state.user.currentUser
+const mapStateToProps = ({
+  user: { currentUser },
+  cartDropdown: { hidden }
+}) => ({
+  currentUser: currentUser,
+  cartDropdown: hidden
 });
 
 export default connect(mapStateToProps)(Header);

@@ -28,32 +28,42 @@
   }
 
   &__link {
+    cursor: pointer;
     transform: translate(-50%, 0%);
     transition: background-color 0.3s, color 0.3s,
       visibility 0.5s, opacity 0.5s;
 
-    &:link,
-    &:visited {
-      position: absolute;
-      bottom: 10%;
-      left: 50%;
-      width: 19rem;
+    // &:link,
+    // &:visited {
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    width: 19rem;
 
-      text-decoration: none;
-      text-transform: uppercase;
+    text-decoration: none;
+    text-transform: uppercase;
 
-      padding: 1.5rem 6rem;
-      color: #333;
-      background-color: #ffffffd5;
+    padding: 1.5rem 6rem;
+    color: #333;
+    background-color: #ffffffd5;
+    border: none;
+    white-space: nowrap;
 
-      opacity: 0;
-      visibility: hidden;
-    }
+    opacity: 0;
+    visibility: hidden;
+
+    display: flex;
+    justify-content: center;
+    // }
 
     &:hover,
     &:active {
       color: #fff;
       background-color: #000000b2;
+    }
+
+    &:focus {
+      outline: none;
     }
   }
 

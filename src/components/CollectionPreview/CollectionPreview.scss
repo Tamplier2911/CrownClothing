@@ -24,13 +24,22 @@
 // repeat span property
 
 @media only screen and (max-width: 1036px) {
-  .check-4 {
+  .collectionItem-4,
+  .collectionItem-13,
+  .collectionItem-21,
+  .collectionItem-26,
+  .collectionItem-33 {
     grid-column: 1 / span 3;
   }
 }
 
 @media only screen and (max-width: 769px) {
-  .check-4 {
+  .collectionItem-4,
+  .collectionItem-13,
+  .collectionItem-21,
+  .collectionItem-26,
+  .collectionItem-33 {
     grid-column: span 1 / span 1;
   }
 }
+// 4 13 21 26 33

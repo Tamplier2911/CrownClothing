@@ -1,19 +1,28 @@
 import "./CollectionItem.scss";
 import React from "react";
 
-const CollectionItem = ({ id, imageUrl, name, price }) => {
-  // console.log(id);
+import { connect } from "react-redux";
+import { addItem } from "../../redux/cart/cart-actions";
+
+const CollectionItem = ({ item, addItem }) => {
+  const { id, imageUrl, name, price } = item;
   return (
-    <figure className={`collectionItem check-${id}`}>
+    <figure
+      className={`collectionItem collectionItem-${id}`}
+    >
       <div className="collectionItem__wrapper">
         <img
           className="collectionItem__image"
           src={imageUrl}
           alt="product presentation"
         />
-        <a className="collectionItem__link" href="/">
+        <button
+          className="collectionItem__link"
+          href="/"
+          onClick={() => addItem(item)}
+        >
           Add to Cart
-        </a>
+        </button>
       </div>
 
       <div className="collectionItem__bottom">
@@ -26,4 +35,7 @@ const CollectionItem = ({ id, imageUrl, name, price }) => {
   );
 };
 
-export default CollectionItem;
+export default connect(
+  null,
+  { addItem }
+)(CollectionItem);

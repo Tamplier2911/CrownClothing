@@ -39,6 +39,8 @@ body {
   //   max-width: 256rem;
   //   margin: 0 auto;
 
+  // SCROLL
+
   &::-webkit-scrollbar {
     width: 0.8rem;
     background-color: #2834930c;
@@ -60,6 +62,15 @@ body {
   }
 }
 
+// SELECTION
+
+::selection {
+  background-color: var(--cl-grey);
+  color: var(--white);
+}
+
+// FLOATS FOR GRACEFUL DEGRADATION
+
 @mixin clearfix {
   :after {
     display: table;
@@ -67,16 +78,3 @@ body {
     clear: both;
   }
 }
-
-// SCROLL
-
-// SELECTION
-
-/*
-
-::selection {
-  background-color: $cl-prime;
-  color: $cl-white;
-}
-
-*/

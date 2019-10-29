@@ -33,8 +33,6 @@
     transition: background-color 0.3s, color 0.3s,
       visibility 0.5s, opacity 0.5s;
 
-    // &:link,
-    // &:visited {
     position: absolute;
     bottom: 10%;
     left: 50%;
@@ -54,7 +52,6 @@
 
     display: flex;
     justify-content: center;
-    // }
 
     &:hover,
     &:active {

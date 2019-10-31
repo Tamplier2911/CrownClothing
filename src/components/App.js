@@ -12,6 +12,7 @@ import Header from "../components/Header/Header";
 import HomePage from "../pages/HomePage/HomePage";
 import ShopPage from "../pages/ShopPage/ShopPage";
 import SignInPage from "../pages/SignInPage/SignInPage";
+import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";
 
 import {
   auth,
@@ -67,6 +68,11 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
+            <Route
+              exac
+              path="/checkout"
+              component={CheckoutPage}
+            />
             <Route
               exact
               path="/sign-in"

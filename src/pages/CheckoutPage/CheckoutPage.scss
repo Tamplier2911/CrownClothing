@@ -28,7 +28,7 @@
     }
 
     &--title {
-      font-size: 2rem;
+      font-size: 2.2rem;
     }
 
     &::after {
@@ -72,6 +72,10 @@
 
     @media only screen and (max-width: 616px) {
       grid-template-columns: repeat(3, 1fr);
+
+      &::before {
+        grid-column: 1/4;
+      }
     }
 
     @media only screen and (max-width: 616px) {

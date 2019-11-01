@@ -1,5 +1,5 @@
 .checkoutItem {
-  font-size: 1.8rem;
+  font-size: 2rem;
   width: 100%;
 
   display: grid;
@@ -23,14 +23,32 @@
   }
   //   &__description {
   //   }
-  //   &__quanity {
-  //   }
+  &__quanity {
+    display: flex;
+    align-items: center;
+    &--number {
+      margin-right: 0.2rem;
+    }
+  }
   //   &__price {
   //   }
+  &__chevron {
+    cursor: pointer;
+    font-size: 2.4rem;
+    font-weight: bold;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #b4b4b4;
+    }
+
+    &:not(:last-child) {
+      margin-right: 0.2rem;
+    }
+  }
   &__remove {
     cursor: pointer;
     transition: color 0.3s;
-
     justify-self: center;
 
     &:hover {

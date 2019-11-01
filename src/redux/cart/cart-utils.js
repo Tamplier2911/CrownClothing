@@ -13,3 +13,24 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
 
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
+
+export const decrementQuantity = (
+  cartItems,
+  cartItemToDecrement
+) => {
+  const decrementItem = cartItems.find(
+    cartItem => cartItem.id === cartItemToDecrement.id
+  );
+
+  if (decrementItem.quantity === 1) {
+    return cartItems.filter(
+      cartItem => cartItem.id !== decrementItem.id
+    );
+  }
+
+  return cartItems.map(cartItem =>
+    cartItem.id === decrementItem.id
+      ? { ...cartItem, quantity: cartItem.quantity - 1 }
+      : cartItem
+  );
+};

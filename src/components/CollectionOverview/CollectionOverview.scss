@@ -1,0 +1,15 @@
+.shopOverview {
+  // width: 100%;
+  // min-height: 100vh;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: min-content;
+  grid-row-gap: 3rem;
+
+  &__title {
+    color: var(--black);
+    font-size: 3.2rem;
+    font-weight: 300;
+  }
+}

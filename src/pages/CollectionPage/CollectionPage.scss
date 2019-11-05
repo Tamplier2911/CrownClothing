@@ -9,6 +9,25 @@
     font-size: 3.2rem;
     font-weight: 300;
 
+    &::first-letter {
+      text-transform: uppercase;
+    }
+    // text-align: center;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(
+      auto-fit,
+      minmax(23.3rem, 1fr)
+    );
+    grid-column-gap: 2rem;
+    grid-row-gap: 2rem;
+  }
+
+  &__notFound {
+    color: var(--black);
+    font-size: 3.2rem;
     text-align: center;
   }
 }

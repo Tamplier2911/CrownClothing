@@ -15,7 +15,7 @@ import { selectCurrentUser } from "../../redux/user/user-selectors";
 
 const Header = ({ currentUser, cartDropdown }) => {
   return (
-    <div className="header">
+    <header className="header">
       <Link className="header__logowrapper" to="/">
         <Logo className="header__logo" />
       </Link>
@@ -50,7 +50,7 @@ const Header = ({ currentUser, cartDropdown }) => {
       </nav>
       <Cart />
       {cartDropdown ? null : <CartDropdown />}
-    </div>
+    </header>
   );
 };
 

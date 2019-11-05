@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 const onItemClick = props => {
   const { history, match, linkUrl } = props;
   history.push(`${match.url}${linkUrl}`);
-  console.log(props);
+  // console.log(props);
 };
 
 const MenuItem = props => {

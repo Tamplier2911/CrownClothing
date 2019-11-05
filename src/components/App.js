@@ -64,7 +64,7 @@ class App extends Component {
     return (
       <div className="container">
         <Header />
-        <div className="main">
+        <main className="main">
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
@@ -86,8 +86,15 @@ class App extends Component {
             />
             <Route path="/hats" component={this.HatsPage} />
           </Switch>
-        </div>
-        <div className="footer">Footer</div>
+        </main>
+        <footer className="footer">
+          <div className="footer__author">
+            App created by Artem Nikolaiev
+          </div>
+          <span className="footer__copy">
+            &copy; all rights reserved
+          </span>
+        </footer>
       </div>
     );
   }

@@ -24,8 +24,20 @@
 }
 
 .footer {
-  padding: 1rem;
-  min-height: 7.8vh;
-  background-color: #9ea198;
-  grid-column: full-start / full-end;
+  padding: 0 2rem 0.5rem 2rem;
+  // min-height: 7.8vh;
+  min-height: 7.5vh;
+  background-color: #fff;
+  grid-column: center-start / center-end;
+
+  text-align: right;
+
+  &__author {
+    font-size: 1.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__copy {
+    font-size: 1.2rem;
+  }
 }

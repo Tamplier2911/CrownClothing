@@ -50,14 +50,6 @@ class App extends Component {
 
   componentDidUpdate() {}
 
-  HatsPage = () => {
-    return (
-      <div>
-        <h1>Hats</h1>
-      </div>
-    );
-  };
-
   render() {
     const { currentUser } = this.props;
     console.log(currentUser);
@@ -84,7 +76,6 @@ class App extends Component {
                 )
               }
             />
-            <Route path="/hats" component={this.HatsPage} />
           </Switch>
         </main>
         <footer className="footer">

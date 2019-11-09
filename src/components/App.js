@@ -9,7 +9,7 @@ import { selectCurrentUser } from "../redux/user/user-selectors";
 
 import Header from "../components/Header/Header";
 
-import HomePage from "../../src/pages/HomePage/HomePage";
+import HomePage from "../pages/HomePage/HomePage";
 import ShopPage from "../pages/ShopPage/ShopPage";
 import SignInPage from "../pages/SignInPage/SignInPage";
 import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";

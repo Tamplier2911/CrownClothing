@@ -3,21 +3,21 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { setCurrentUser } from "../redux/user/user-actions";
+import { setCurrentUser } from "./redux/user/user-actions";
 import { createStructuredSelector } from "reselect";
-import { selectCurrentUser } from "../redux/user/user-selectors";
+import { selectCurrentUser } from "./redux/user/user-selectors";
 
-import Header from "../components/Header/Header";
+import Header from "./components/Header/Header";
 
-import HomePage from "../pages/HomePage/HomePage";
-import ShopPage from "../pages/ShopPage/ShopPage";
-import SignInPage from "../pages/SignInPage/SignInPage";
-import CheckoutPage from "../pages/CheckoutPage/CheckoutPage";
+import HomePage from "./pages/HomePage/HomePage";
+import ShopPage from "./pages/ShopPage/ShopPage";
+import SignInPage from "./pages/SignInPage/SignInPage";
+import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 import {
   auth,
   createUserProfileDocument
-} from "../firebase/firebase.utils";
+} from "./firebase/firebase.utils";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -52,7 +52,7 @@ class App extends Component {
 
   render() {
     const { currentUser } = this.props;
-    console.log(currentUser);
+    // console.log(currentUser);
     return (
       <div className="container">
         <Header />

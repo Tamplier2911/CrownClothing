@@ -15,7 +15,7 @@ const CheckoutItem = ({
   decrementQuantity
 }) => {
   const { imageUrl, name, quantity, price } = cartItem;
-  console.log(cartItem);
+  // console.log(cartItem);
   return (
     <div className="checkoutItem">
       <div className="checkoutItem__imageWrapper">

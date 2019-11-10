@@ -1,3 +1,7 @@
+## Beta-Test Of Application
+
+Beta-build using heroku - https://crown-clothing-s.herokuapp.com/
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

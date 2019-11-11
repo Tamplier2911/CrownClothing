@@ -42,6 +42,8 @@
     color: var(--cl-font);
     font-size: 2rem;
 
+    white-space: nowrap;
+
     &:link,
     &:visited {
       color: var(--cl-font);

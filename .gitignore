@@ -23,7 +23,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # api
-src/environment.js
+# src/environment.js
 
 #git rm -r --cached .
 #git add .

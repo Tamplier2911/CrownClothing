@@ -7,17 +7,14 @@ import { setCurrentUser } from "./redux/user/user-actions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user-selectors";
 
-import Header from "./components/Header/Header";
+import Header from "./components/Header/Header.jsx";
 
 import HomePage from "./pages/HomePage/HomePage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
-import {
-  auth,
-  createUserProfileDocument
-} from "./firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -25,23 +22,19 @@ class App extends Component {
   componentDidMount() {
     const { setCurrentUser } = this.props;
 
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(
-      async userAuth => {
-        if (userAuth) {
-          const userRef = await createUserProfileDocument(
-            userAuth
-          );
-          userRef.onSnapshot(snapShot =>
-            setCurrentUser({
-              id: snapShot.id,
-              ...snapShot.data()
-            })
-          );
-        } else {
-          setCurrentUser(userAuth);
-        }
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+      if (userAuth) {
+        const userRef = await createUserProfileDocument(userAuth);
+        userRef.onSnapshot(snapShot =>
+          setCurrentUser({
+            id: snapShot.id,
+            ...snapShot.data()
+          })
+        );
+      } else {
+        setCurrentUser(userAuth);
       }
-    );
+    });
   }
 
   componentWillUnmount() {
@@ -60,31 +53,19 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
-            <Route
-              exact
-              path="/checkout"
-              component={CheckoutPage}
-            />
+            <Route exact path="/checkout" component={CheckoutPage} />
             <Route
               exact
               path="/sign-in"
               render={() =>
-                currentUser ? (
-                  <Redirect to="/" />
-                ) : (
-                  <SignInPage />
-                )
+                currentUser ? <Redirect to="/" /> : <SignInPage />
               }
             />
           </Switch>
         </main>
         <footer className="footer">
-          <div className="footer__author">
-            App created by Artem Nikolaiev
-          </div>
-          <span className="footer__copy">
-            &copy; all rights reserved
-          </span>
+          <div className="footer__author">App created by Artem Nikolaiev</div>
+          <span className="footer__copy">&copy; all rights reserved</span>
         </footer>
       </div>
     );

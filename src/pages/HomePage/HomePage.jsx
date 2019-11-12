@@ -1,9 +1,9 @@
-import "./HomePage.scss";
+// import "./HomePage.scss";
 import React from "react";
 import DirectoryMenu from "../../components/DirectoryMenu/DirectoryMenu";
 
 // JS rendered styles
-import { HomePageContainer } from "./HomePage";
+import { HomePageContainer } from "./HomePageStyles";
 
 const HomePage = () => {
   return (
@@ -11,7 +11,7 @@ const HomePage = () => {
     <HomePageContainer>
       <DirectoryMenu />
     </HomePageContainer>
-    //</div>
+    // </div>
   );
 };
 

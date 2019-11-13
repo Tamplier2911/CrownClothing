@@ -7,11 +7,9 @@ import { HomePageContainer } from "./HomePageStyles";
 
 const HomePage = () => {
   return (
-    // <div className="homepage">
     <HomePageContainer>
       <DirectoryMenu />
     </HomePageContainer>
-    // </div>
   );
 };
 

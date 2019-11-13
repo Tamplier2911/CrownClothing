@@ -5,10 +5,7 @@ import { withRouter } from "react-router-dom";
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
-import {
-  auth,
-  createUserProfileDocument
-} from "../../firebase/firebase.utils";
+import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
 class SignUp extends Component {
   constructor(props) {
@@ -28,12 +25,7 @@ class SignUp extends Component {
 
   onSubmit = async e => {
     e.preventDefault();
-    const {
-      displayName,
-      email,
-      password,
-      confirmPassword
-    } = this.state;
+    const { displayName, email, password, confirmPassword } = this.state;
 
     if (password !== confirmPassword) {
       alert("Confirmed password must match original.");
@@ -41,9 +33,7 @@ class SignUp extends Component {
     }
 
     try {
-      const {
-        user
-      } = await auth.createUserWithEmailAndPassword(
+      const { user } = await auth.createUserWithEmailAndPassword(
         email,
         password
       );
@@ -72,25 +62,15 @@ class SignUp extends Component {
   };
 
   render() {
-    const {
-      displayName,
-      email,
-      password,
-      confirmPassword
-    } = this.state;
+    const { displayName, email, password, confirmPassword } = this.state;
 
     return (
       <div className="signUp">
-        <h2 className="signUp__title">
-          I do not have an account
-        </h2>
+        <h2 className="signUp__title">I do not have an account</h2>
         <span className="signUp__sub">
           Sign up with your email and password
         </span>
-        <form
-          className="signUp__form"
-          onSubmit={this.onSubmit}
-        >
+        <form className="signUp__form" onSubmit={this.onSubmit}>
           <FormInput
             onInputChange={this.onInputChange}
             value={displayName}
@@ -123,10 +103,7 @@ class SignUp extends Component {
             type="password"
             required
           />
-          <CustomButton
-            styles="signUp__submit"
-            type="submit"
-          >
+          <CustomButton styles="black" type="submit">
             Sign Up
           </CustomButton>
         </form>

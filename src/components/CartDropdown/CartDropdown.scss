@@ -3,11 +3,11 @@
   position: fixed;
   top: 5rem;
   right: 2rem;
-  border: 0.1rem solid #000;
+  border: 0.1rem solid var(--black);
   width: 30%;
   max-width: 35rem;
   height: 40rem;
-  background-color: #fff;
+  background-color: var(--white);
 
   z-index: 10;
 
@@ -49,11 +49,7 @@
     }
 
     &::-webkit-scrollbar-thumb {
-      background-image: linear-gradient(
-        to bottom,
-        #434444,
-        #626767
-      );
+      background-image: linear-gradient(to bottom, #434444, #626767);
       border-radius: 5rem;
     }
 
@@ -76,6 +72,7 @@
     display: grid;
   }
 
+  /*
   &__button {
     padding: 1rem;
 
@@ -89,4 +86,5 @@
       border: 0.1rem var(--black) solid;
     }
   }
+  */
 }

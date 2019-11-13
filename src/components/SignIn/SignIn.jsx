@@ -5,10 +5,7 @@ import React, { Component } from "react";
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
-import {
-  auth,
-  signInWithGoogle
-} from "../../firebase/firebase.utils";
+import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
 
 class SignIn extends Component {
   constructor(props) {
@@ -28,10 +25,7 @@ class SignIn extends Component {
     e.preventDefault();
     const { email, password } = this.state;
     try {
-      await auth.signInWithEmailAndPassword(
-        email,
-        password
-      );
+      await auth.signInWithEmailAndPassword(email, password);
 
       this.setState({ email: "", password: "" });
 
@@ -50,16 +44,11 @@ class SignIn extends Component {
   render() {
     return (
       <div className="signIn">
-        <h2 className="signIn__title">
-          I already have an account
-        </h2>
+        <h2 className="signIn__title">I already have an account</h2>
         <span className="signIn__sub">
           Sign in with your email and password
         </span>
-        <form
-          className="signIn__form"
-          onSubmit={this.onSubmit}
-        >
+        <form className="signIn__form" onSubmit={this.onSubmit}>
           <FormInput
             onInputChange={this.onInputChange}
             value={this.state.email}
@@ -78,15 +67,12 @@ class SignIn extends Component {
             required
           />
 
-          <CustomButton
-            styles="signIn__submit"
-            type="submit"
-          >
+          <CustomButton styles="black" type="submit">
             Sign In
           </CustomButton>
 
           <CustomButton
-            styles="signIn__button"
+            styles="blue"
             onClick={() => signInWithGoogle(this.props)}
           >
             Signn In With Google

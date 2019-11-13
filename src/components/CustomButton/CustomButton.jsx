@@ -1,18 +1,13 @@
-import "./CustomButton.scss";
+// import "./CustomButton.scss";
 import React from "react";
 
-const CustomButton = ({
-  children,
-  styles,
-  ...otherProps
-}) => {
+// JS Rendered Styles
+import { CustomButtonContainer } from "./CustomButtonStyles";
+
+// passing styles prop - either black or blue
+const CustomButton = ({ children, ...otherProps }) => {
   return (
-    <button
-      className={`custom-button ${styles} `}
-      {...otherProps}
-    >
-      {children}
-    </button>
+    <CustomButtonContainer {...otherProps}>{children}</CustomButtonContainer>
   );
 };
 

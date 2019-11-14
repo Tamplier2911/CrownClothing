@@ -1,41 +1,37 @@
-import "./CollectionItem.scss";
 import React from "react";
 
 import { connect } from "react-redux";
 import { addItem } from "../../redux/cart/cart-actions";
 
+// JS Rendered Styles
+
+import {
+  CollectionItemContainer,
+  CollectionItemImgWrp,
+  CollectionItemImg,
+  CollectionItemBtn,
+  CollectionItemContent,
+  CollectionItemName,
+  CollectionItemPrice
+} from "./CollectionItemStyles";
+
 const CollectionItem = ({ item, addItem }) => {
   const { id, imageUrl, name, price } = item;
   return (
-    <figure
-      className={`collectionItem collectionItem-${id}`}
-    >
-      <div className="collectionItem__wrapper">
-        <img
-          className="collectionItem__image"
-          src={imageUrl}
-          alt="product presentation"
-        />
-        <button
-          className="collectionItem__link"
-          href="/"
-          onClick={() => addItem(item)}
-        >
+    <CollectionItemContainer id={id}>
+      <CollectionItemImgWrp>
+        <CollectionItemImg src={imageUrl} alt="product presentation" />
+        <CollectionItemBtn href="/" onClick={() => addItem(item)}>
           Add to Cart
-        </button>
-      </div>
+        </CollectionItemBtn>
+      </CollectionItemImgWrp>
 
-      <div className="collectionItem__bottom">
-        <div className="collectionItem__name">{name}</div>
-        <div className="collectionItem__price">
-          ${price}
-        </div>
-      </div>
-    </figure>
+      <CollectionItemContent>
+        <CollectionItemName>{name}</CollectionItemName>
+        <CollectionItemPrice>${price}</CollectionItemPrice>
+      </CollectionItemContent>
+    </CollectionItemContainer>
   );
 };
 
-export default connect(
-  null,
-  { addItem }
-)(CollectionItem);
+export default connect(null, { addItem })(CollectionItem);

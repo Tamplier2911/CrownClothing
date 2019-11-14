@@ -1,25 +1,28 @@
-import "./CartItem.scss";
 import React from "react";
 
-const CartItem = ({
-  item: { name, price, imageUrl, quantity }
-}) => {
+// JS Rendering Styles
+import {
+  CartItemContainer,
+  CartItemImgWrapper,
+  CartItemImg,
+  CartItemTextContainer,
+  CartItemTitle,
+  CartItemPrice
+} from "./CartItemStyles";
+
+const CartItem = ({ item: { name, price, imageUrl, quantity } }) => {
   return (
-    <div className="cartItem">
-      <div className="cartItem__imgWrapper">
-        <img
-          className="cartItem__img"
-          alt="test"
-          src={imageUrl}
-        ></img>
-      </div>
-      <div className="cartItem__textWrapper">
-        <span className="cartItem__title">{name}</span>
-        <span className="cartItem__price">
+    <CartItemContainer>
+      <CartItemImgWrapper>
+        <CartItemImg alt="test" src={imageUrl}></CartItemImg>
+      </CartItemImgWrapper>
+      <CartItemTextContainer>
+        <CartItemTitle>{name}</CartItemTitle>
+        <CartItemPrice>
           {quantity} x ${price}
-        </span>
-      </div>
-    </div>
+        </CartItemPrice>
+      </CartItemTextContainer>
+    </CartItemContainer>
   );
 };
 

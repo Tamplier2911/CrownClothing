@@ -1,9 +1,7 @@
-// import "./Header.scss";
 import React from "react";
 import Cart from "../Cart/Cart";
 import CartDropdown from "../CartDropdown/CartDropdown";
 
-// import { Link } from "react-router-dom";
 import { ReactComponent as Logo } from "../../images/svg/crown.svg";
 
 import { auth } from "../../firebase/firebase.utils";

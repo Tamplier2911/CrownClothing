@@ -1,18 +1,19 @@
-import "./Cart.scss";
 import React from "react";
-import { ReactComponent as CartIcon } from "../../images/svg/shopping-bag.svg";
 
 import { connect } from "react-redux";
 import { toggleCartDropdown } from "../../redux/cart/cart-actions";
 import { createStructuredSelector } from "reselect";
 import { selectCartItemsCount } from "../../redux/cart/cart-selectors";
 
+// JS Rendered Styles
+import { CartContainer, CartCount, CartSVG } from "./CartStyles";
+
 const Cart = ({ toggleCartDropdown, itemCount }) => {
   return (
-    <div className="cart" onClick={toggleCartDropdown}>
-      <CartIcon className="cart__icon" />
-      <span className="cart__count">{itemCount}</span>
-    </div>
+    <CartContainer onClick={toggleCartDropdown}>
+      <CartSVG />
+      <CartCount>{itemCount}</CartCount>
+    </CartContainer>
   );
 };
 
@@ -20,7 +21,4 @@ const mapStateToProps = createStructuredSelector({
   itemCount: selectCartItemsCount
 });
 
-export default connect(
-  mapStateToProps,
-  { toggleCartDropdown }
-)(Cart);
+export default connect(mapStateToProps, { toggleCartDropdown })(Cart);

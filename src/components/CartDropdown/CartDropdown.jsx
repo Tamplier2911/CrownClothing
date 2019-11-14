@@ -1,4 +1,3 @@
-import "./CartDropdown.scss";
 import React from "react";
 import { withRouter } from "react-router-dom";
 
@@ -10,22 +9,31 @@ import { selectCartItems } from "../../redux/cart/cart-selectors";
 import CartItem from "../CartItem/CartItem";
 import CustomButton from "../CustomButton/CustomButton";
 
+// JS Rending Styles
+import {
+  CartDropdownContainer,
+  CartDropdownToggler,
+  CartDropdownItems,
+  CartDropdownEmpty,
+  CartDropdownButtonContainer
+} from "./CartDropdownStyles";
+
 const CartDropdown = ({ cartItems, toggleCartDropdown, history }) => {
   return (
-    <div className="cartDropdown">
-      <div className="cartDropdown__toggler" onClick={toggleCartDropdown}>
+    <CartDropdownContainer>
+      <CartDropdownToggler onClick={toggleCartDropdown}>
         &#10006;
-      </div>
-      <div className="cartDropdown__items">
+      </CartDropdownToggler>
+      <CartDropdownItems>
         {cartItems.length > 0 ? (
           cartItems.map(cartItem => (
             <CartItem key={cartItem.id} item={cartItem} />
           ))
         ) : (
-          <div className="cartDropdown__empty">Your cart is empty...</div>
+          <CartDropdownEmpty>Your cart is empty...</CartDropdownEmpty>
         )}
-      </div>
-      <div className="cartDropdown__btnWrapper">
+      </CartDropdownItems>
+      <CartDropdownButtonContainer>
         <CustomButton
           styles="black"
           type="button"
@@ -36,8 +44,8 @@ const CartDropdown = ({ cartItems, toggleCartDropdown, history }) => {
         >
           Go To Checkout
         </CustomButton>
-      </div>
-    </div>
+      </CartDropdownButtonContainer>
+    </CartDropdownContainer>
   );
 };
 

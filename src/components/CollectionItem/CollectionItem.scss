@@ -1,3 +1,5 @@
+/*
+
 .collectionItem {
   width: 100%;
   height: 100%;
@@ -30,8 +32,7 @@
   &__link {
     cursor: pointer;
     transform: translate(-50%, 0%);
-    transition: background-color 0.3s, color 0.3s,
-      visibility 0.5s, opacity 0.5s;
+    transition: background-color 0.3s, color 0.3s, visibility 0.5s, opacity 0.5s;
 
     position: absolute;
     bottom: 10%;
@@ -86,3 +87,5 @@
     font-size: 1.8rem;
   }
 }
+
+*/

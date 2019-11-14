@@ -1,4 +1,3 @@
-// import "./HomePage.scss";
 import React from "react";
 import DirectoryMenu from "../../components/DirectoryMenu/DirectoryMenu";
 

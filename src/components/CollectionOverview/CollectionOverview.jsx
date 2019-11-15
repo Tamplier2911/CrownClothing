@@ -1,4 +1,3 @@
-import "./CollectionOverview.scss";
 import React from "react";
 
 import { connect } from "react-redux";
@@ -7,19 +6,20 @@ import { selectShopCollectionsAsArray } from "../../redux/shop/shop-selectors";
 
 import CollectionPreview from "../CollectionPreview/CollectionPreview";
 
+// JS Rendering CSS
+import {
+  CollectionOverviewContainer,
+  CollectionOverviewTitle
+} from "./CollectionOverviewStyles";
+
 const CollectionOverview = ({ collections }) => {
   return (
-    <div className="shopOverview">
-      <h1 className="shopOverview__title">Collections</h1>
+    <CollectionOverviewContainer>
+      <CollectionOverviewTitle>Collections</CollectionOverviewTitle>
       {collections.map(({ id, ...collectionProps }) => {
-        return (
-          <CollectionPreview
-            key={id}
-            {...collectionProps}
-          />
-        );
+        return <CollectionPreview key={id} {...collectionProps} />;
       })}
-    </div>
+    </CollectionOverviewContainer>
   );
 };
 

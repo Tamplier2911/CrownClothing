@@ -1,6 +1,7 @@
-/*
-.stripe,
-.stripe span {
+import styled, { css } from "styled-components";
+import StripeCheckout from "react-stripe-checkout";
+
+const StripeButtonAndStripeHiddenDivStyles = css`
   cursor: pointer !important;
   font-family: var(--font-reg) !important;
   font-size: 1.8rem !important;
@@ -22,13 +23,14 @@
   background-color: var(--white) !important;
 
   transition: color 0.3s, background-color 0.3s !important;
-}
+`;
 
-.stripe {
+export const StripeCheckoutButton = styled(StripeCheckout)`
+  ${StripeButtonAndStripeHiddenDivStyles}
+
   align-self: center;
   display: grid !important;
   border: 0.1rem solid var(--black) !important;
-  //   align-items: stretch !important;
 
   &:hover {
     background-color: var(--black) !important;
@@ -42,16 +44,17 @@
     color: var(--white) !important;
     background-color: var(--black) !important;
   }
-}
 
-.stripe span {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+  & span {
+    ${StripeButtonAndStripeHiddenDivStyles}
 
-  height: 100% !important;
-  line-height: normal !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 
-  padding: 1.2rem !important;
-}
-*/
+    height: 100% !important;
+    line-height: normal !important;
+
+    padding: 1.2rem !important;
+  }
+`;

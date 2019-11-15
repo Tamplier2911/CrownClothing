@@ -1,4 +1,3 @@
-import "./SignUp.scss";
 import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
 
@@ -6,6 +5,14 @@ import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
 import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+
+// JS Rendering CSS
+import {
+  SignUpContainer,
+  SignUpTitle,
+  SignUpSubTitle,
+  SignUpForm
+} from "./SignUpStyles";
 
 class SignUp extends Component {
   constructor(props) {
@@ -65,12 +72,10 @@ class SignUp extends Component {
     const { displayName, email, password, confirmPassword } = this.state;
 
     return (
-      <div className="signUp">
-        <h2 className="signUp__title">I do not have an account</h2>
-        <span className="signUp__sub">
-          Sign up with your email and password
-        </span>
-        <form className="signUp__form" onSubmit={this.onSubmit}>
+      <SignUpContainer>
+        <SignUpTitle>I do not have an account</SignUpTitle>
+        <SignUpSubTitle>Sign up with your email and password</SignUpSubTitle>
+        <SignUpForm onSubmit={this.onSubmit}>
           <FormInput
             onInputChange={this.onInputChange}
             value={displayName}
@@ -106,8 +111,8 @@ class SignUp extends Component {
           <CustomButton styles="black" type="submit">
             Sign Up
           </CustomButton>
-        </form>
-      </div>
+        </SignUpForm>
+      </SignUpContainer>
     );
   }
 }

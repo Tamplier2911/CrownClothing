@@ -1,21 +1,25 @@
-import "./CollectionPreview.scss";
 import React from "react";
 import CollectionItem from "../CollectionItem/CollectionItem";
 
+// JS Rendering CSS
+import {
+  CollectionContainer,
+  CollectionTitle,
+  CollectionView
+} from "./CollectionPreviewStyles";
+
 const CollectionPreview = ({ title, items }) => {
   return (
-    <div className="collection">
-      <h1 className="collection__title">{title}</h1>
-      <div className="collection__preview">
+    <CollectionContainer>
+      <CollectionTitle>{title}</CollectionTitle>
+      <CollectionView>
         {items
           .filter((item, index) => index < 4)
           .map(item => {
-            return (
-              <CollectionItem key={item.id} item={item} />
-            );
+            return <CollectionItem key={item.id} item={item} />;
           })}
-      </div>
-    </div>
+      </CollectionView>
+    </CollectionContainer>
   );
 };
 

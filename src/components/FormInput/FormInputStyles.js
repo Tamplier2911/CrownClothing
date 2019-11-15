@@ -1,16 +1,21 @@
-/*
-@mixin shrinkLable {
+import styled, { css } from "styled-components";
+
+const shrink = css`
   top: -1rem;
   font-size: 1.5rem;
   color: var(--cl-font);
-}
+`;
 
-.input__wrapper {
+const ShrinkOnInput = props => {
+  return props.inputLength ? shrink : null;
+};
+
+export const FormInputContainer = styled.div`
   position: relative;
   grid-column: 1/-1;
-}
+`;
 
-.form__input {
+export const FormInputBar = styled.input`
   color: var(--cl-font);
   font-family: var(--font-reg);
   font-size: 1.8rem;
@@ -36,29 +41,21 @@
     outline: none;
   }
 
-  &:hover {
-  }
-
   &:focus {
     outline: none;
     border-bottom: 0.2rem solid var(--cl-font);
   }
 
-  &:focus ~ .form__label {
-    @include shrinkLable();
+  &:focus ~ label {
+    ${shrink}
   }
 
   &:invalid {
-    //   border-bottom: 0.2rem solid var(--cl-danger);
     box-shadow: none;
   }
+`;
 
-  //   &:invalid ~ .form__label {
-  //     color: red;
-  //   }
-}
-
-.form__label {
+export const FormInputLabel = styled.label`
   position: absolute;
   color: var(--cl-grey);
   font-size: 2rem;
@@ -66,10 +63,6 @@
   left: 0;
 
   transition: font-size 0.3s, top 0.3s;
-}
 
-.shrink {
-  @include shrinkLable();
-}
-
-*/
+  ${ShrinkOnInput}
+`;

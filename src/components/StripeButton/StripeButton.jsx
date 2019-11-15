@@ -1,8 +1,8 @@
-import "./StripeButton.scss";
 import React from "react";
-
-import StripeCheckout from "react-stripe-checkout";
 import { stripeApiKey } from "../../environment";
+
+// JS Rendering CSS
+import { StripeCheckoutButton } from "./StripeButtonStyles";
 
 const onToken = token => {
   console.log(token);
@@ -19,7 +19,7 @@ const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
   const bulishebleKey = stripeApiKey;
   return (
-    <StripeCheckout
+    <StripeCheckoutButton
       lable="Buy Now"
       name="Crown Clothing"
       shippingAddress

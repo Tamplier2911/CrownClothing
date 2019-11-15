@@ -40,11 +40,11 @@ export const CollectionItemImgWrp = styled.div`
   height: 35rem;
   position: relative;
 
-  &:hover .sc-jKJlTe {
+  &:hover img {
     filter: brightness(120%);
   }
 
-  &:hover .sc-eNQAEJ {
+  &:hover button {
     opacity: 1;
     visibility: visible;
   }

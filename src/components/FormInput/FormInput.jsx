@@ -1,28 +1,22 @@
-import "./FormInput.scss";
 import React from "react";
 
-const FormInput = ({
-  onInputChange,
-  label,
-  ...otherProps
-}) => {
+// JS Rendering CSS
+import {
+  FormInputContainer,
+  FormInputBar,
+  FormInputLabel
+} from "./FormInputStyles";
+
+const FormInput = ({ onInputChange, label, ...otherProps }) => {
   return (
-    <div className="input__wrapper">
-      <input
-        className={`form__input`}
-        onChange={onInputChange}
-        {...otherProps}
-      />
+    <FormInputContainer>
+      <FormInputBar onChange={onInputChange} {...otherProps} />
       {label ? (
-        <label
-          className={`${
-            otherProps.value.length ? "shrink" : ""
-          } form__label`}
-        >
+        <FormInputLabel inputLength={otherProps.value.length}>
           {label}
-        </label>
+        </FormInputLabel>
       ) : null}
-    </div>
+    </FormInputContainer>
   );
 };
 

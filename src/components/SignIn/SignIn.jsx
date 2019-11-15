@@ -1,11 +1,17 @@
-import "./SignIn.scss";
 import React, { Component } from "react";
-// import { withRouter } from "react-router-dom";
 
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
 import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+
+// JS Rendering CSS
+import {
+  SignInContainer,
+  SignInTitle,
+  SignInSubtitle,
+  SignInForm
+} from "./SignInStyles";
 
 class SignIn extends Component {
   constructor(props) {
@@ -28,8 +34,6 @@ class SignIn extends Component {
       await auth.signInWithEmailAndPassword(email, password);
 
       this.setState({ email: "", password: "" });
-
-      // this.props.history.push("/");
     } catch (err) {
       // Implement meaningful error handler.
       alert(err.message);
@@ -43,12 +47,10 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className="signIn">
-        <h2 className="signIn__title">I already have an account</h2>
-        <span className="signIn__sub">
-          Sign in with your email and password
-        </span>
-        <form className="signIn__form" onSubmit={this.onSubmit}>
+      <SignInContainer>
+        <SignInTitle>I already have an account</SignInTitle>
+        <SignInSubtitle>Sign in with your email and password</SignInSubtitle>
+        <SignInForm onSubmit={this.onSubmit}>
           <FormInput
             onInputChange={this.onInputChange}
             value={this.state.email}
@@ -77,8 +79,8 @@ class SignIn extends Component {
           >
             Signn In With Google
           </CustomButton>
-        </form>
-      </div>
+        </SignInForm>
+      </SignInContainer>
     );
   }
 }

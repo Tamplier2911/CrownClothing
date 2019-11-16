@@ -1,4 +1,3 @@
-import "./CollectionPage.scss";
 import React from "react";
 
 import { connect } from "react-redux";
@@ -6,34 +5,34 @@ import { selectShopCollection } from "../../redux/shop/shop-selectors";
 
 import CollectionItem from "../../components/CollectionItem/CollectionItem";
 
+// JS Rendering CSS
+import {
+  CollectionPageContainer,
+  CollectionPageTitle,
+  CollectionPageBlock,
+  CollectionPageNotFound
+} from "./CollectionPageStyles";
+
 const CollectionPage = ({ collection }) => {
   if (collection) {
     const { items, title } = collection;
     return (
-      <div className="collectionPage">
-        <h1 className="collectionPage__title">{title}</h1>
-        <div className="collectionPage__container">
+      <CollectionPageContainer>
+        <CollectionPageTitle>{title}</CollectionPageTitle>
+        <CollectionPageBlock>
           {items.map(item => {
-            return (
-              <CollectionItem key={item.id} item={item} />
-            );
+            return <CollectionItem key={item.id} item={item} />;
           })}
-        </div>
-      </div>
+        </CollectionPageBlock>
+      </CollectionPageContainer>
     );
   } else {
-    return (
-      <div className="collectionPage__notFound">
-        Page not found 404!
-      </div>
-    );
+    return <CollectionPageNotFound>Page not found 404!</CollectionPageNotFound>;
   }
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  collection: selectShopCollection(
-    ownProps.match.params.categoryId
-  )(state)
+  collection: selectShopCollection(ownProps.match.params.categoryId)(state)
 });
 
 export default connect(mapStateToProps)(CollectionPage);

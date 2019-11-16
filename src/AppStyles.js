@@ -1,5 +1,6 @@
-/*
-.container {
+import styled from "styled-components";
+
+export const AppContainer = styled.div`
   display: grid;
   grid-template-rows: repeat(3, min-content);
   grid-template-columns:
@@ -10,10 +11,9 @@
     )
     [center-end]
     minmax(0, 1fr) [full-end];
-}
+`;
 
-.main {
-  // min-height: calc(100vh - (9.6rem * 2));
+export const AppMain = styled.main`
   min-height: 80vh;
   padding: 2rem 2rem;
   background-color: var(--white);
@@ -22,5 +22,4 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-*/
+`;

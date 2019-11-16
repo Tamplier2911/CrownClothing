@@ -1,4 +1,4 @@
-import "./App.scss";
+// import "./App.scss";
 import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
@@ -14,7 +14,12 @@ import ShopPage from "./pages/ShopPage/ShopPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
+import Footer from "./components/Footer/Footer";
+
 import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+
+// JS Rendering CSS
+import { AppContainer, AppMain } from "./AppStyles";
 
 class App extends Component {
   unsubscribeFromAuth = null;
@@ -47,9 +52,9 @@ class App extends Component {
     const { currentUser } = this.props;
     // console.log(currentUser);
     return (
-      <div className="container">
+      <AppContainer>
         <Header />
-        <main className="main">
+        <AppMain>
           <Switch>
             <Route exact path="/" component={HomePage} />
             <Route path="/shop" component={ShopPage} />
@@ -62,12 +67,9 @@ class App extends Component {
               }
             />
           </Switch>
-        </main>
-        <footer className="footer">
-          <div className="footer__author">App created by Artem Nikolaiev</div>
-          <span className="footer__copy">&copy; all rights reserved</span>
-        </footer>
-      </div>
+        </AppMain>
+        <Footer />
+      </AppContainer>
     );
   }
 }

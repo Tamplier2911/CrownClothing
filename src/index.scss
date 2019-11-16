@@ -16,7 +16,7 @@
 
 // 768px / 16px = 48em
 $tablet: 48em;
-// 425px / 16px = 26.5625
+// 425px / 16px = 26.5625em
 $mobile: 26.563em;
 
 // BASE
@@ -64,11 +64,7 @@ body {
   }
 
   &::-webkit-scrollbar-thumb {
-    background-image: linear-gradient(
-      to bottom,
-      #434444,
-      #626767
-    );
+    background-image: linear-gradient(to bottom, #434444, #626767);
     border-radius: 5rem;
   }
 

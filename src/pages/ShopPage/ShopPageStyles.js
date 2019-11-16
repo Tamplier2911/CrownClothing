@@ -1,5 +1,6 @@
-/*
-.shoppage {
+import styled from "styled-components";
+
+export const ShopPageContainer = styled.div`
   width: 100%;
   min-height: 100vh;
 
@@ -13,5 +14,4 @@
     font-size: 3.2rem;
     font-weight: 300;
   }
-}
-*/
+`;

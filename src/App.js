@@ -16,16 +16,22 @@ import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
 
 import Footer from "./components/Footer/Footer";
 
-import { auth, createUserProfileDocument } from "./firebase/firebase.utils";
+import {
+  auth,
+  createUserProfileDocument,
+  addCollectionAndDocuments
+} from "./firebase/firebase.utils";
 
 // JS Rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
+
+import { selectShopCollectionsAsArray } from "./redux/shop/shop-selectors";
 
 class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
-    const { setCurrentUser } = this.props;
+    const { setCurrentUser, collectionsArray } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
       if (userAuth) {
@@ -40,6 +46,11 @@ class App extends Component {
         setCurrentUser(userAuth);
       }
     });
+
+    // addCollectionAndDocuments(
+    //   "collections",
+    //   collectionsArray.map(({ title, items }) => ({ title, items }))
+    // );
   }
 
   componentWillUnmount() {
@@ -49,8 +60,9 @@ class App extends Component {
   componentDidUpdate() {}
 
   render() {
-    const { currentUser } = this.props;
+    const { currentUser, collectionsArray } = this.props;
     // console.log(currentUser);
+    console.log(collectionsArray.map(({ title, items }) => ({ title, items })));
     return (
       <AppContainer>
         <Header />
@@ -79,7 +91,8 @@ class App extends Component {
 // });
 
 const mapStateToProps = createStructuredSelector({
-  currentUser: selectCurrentUser
+  currentUser: selectCurrentUser,
+  collectionsArray: selectShopCollectionsAsArray
 });
 
 export default connect(

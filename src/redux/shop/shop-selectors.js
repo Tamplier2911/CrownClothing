@@ -15,10 +15,15 @@ export const selectShopCollections = createSelector(
   shop => shop.collections
 );
 
+// export const selectCollectionsForPreview = createSelector(
+//   [selectShopCollections],
+//   collections => (collections ? Object.values(collections) : [])
+// );
+
 export const selectShopCollectionsAsArray = createSelector(
   [selectShopCollections],
   selectShopCollections =>
-    Object.values(selectShopCollections)
+    selectShopCollections ? Object.values(selectShopCollections) : []
 );
 
 // data normalization storing as hashmap

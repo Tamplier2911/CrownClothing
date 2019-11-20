@@ -43,8 +43,10 @@ export const addCollectionAndDocuments = async (
 
   collectionDocuments.forEach(doc => {
     // making new reference objects for each collectionDocuments
-    // whatever we pass in .doc(here) will be doc ID, empty - gives default ID
+    // whatever we pass in .doc(here) will be doc ID, empty - will give default ID
     const docRef = collectionRef.doc();
+
+    // console.log(docRef);
 
     // setting value of each document in collectionDocuments
     // using make data consistant (or save all or save noone)
@@ -52,7 +54,34 @@ export const addCollectionAndDocuments = async (
   });
 
   // fireing batch request <- returns promise
-  return await batch.commit();
+  return await batch
+    .commit()
+    .then(() => {
+      alert("Transaction success.");
+    })
+    .catch(err => alert(`There was an error: ${err}`));
+};
+
+export const convertCollectionsSnapshotToMap = async arrayOfCollectionSnapshot => {
+  const arrayOfRetrievedAndTransformedData = await arrayOfCollectionSnapshot.docs.map(
+    snapshot => {
+      const { title, items } = snapshot.data();
+      return {
+        id: snapshot.id,
+        routeName: encodeURI(title.toLowerCase()),
+        title,
+        items
+      };
+    }
+  );
+
+  return arrayOfRetrievedAndTransformedData.reduce(
+    (accumulator, collectionDocumet) => {
+      accumulator[collectionDocumet.title.toLowerCase()] = collectionDocumet;
+      return accumulator;
+    },
+    {}
+  );
 };
 
 export const auth = firebase.auth();

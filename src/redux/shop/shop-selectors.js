@@ -22,15 +22,13 @@ export const selectShopCollections = createSelector(
 
 export const selectShopCollectionsAsArray = createSelector(
   [selectShopCollections],
-  selectShopCollections =>
-    selectShopCollections ? Object.values(selectShopCollections) : []
+  collection => (collection ? Object.values(collection) : [])
 );
 
 // data normalization storing as hashmap
 export const selectShopCollection = collectionUrlParam =>
-  createSelector(
-    [selectShopCollections],
-    collection => collection[collectionUrlParam]
+  createSelector([selectShopCollections], collection =>
+    collection ? collection[collectionUrlParam] : null
   );
 
 // storing as an array

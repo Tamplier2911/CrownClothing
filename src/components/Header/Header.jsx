@@ -34,7 +34,7 @@ const Header = ({ currentUser, cartDropdown }) => {
             <NavigationLink to="/shop">Shop</NavigationLink>
           </Li>
           <Li>
-            <NavigationLink to="/contact">Contact</NavigationLink>
+            <NavigationLink to="/contact">Contacts</NavigationLink>
           </Li>
           <Li>
             {currentUser ? (

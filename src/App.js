@@ -13,6 +13,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import ShopPage from "./pages/ShopPage/ShopPage";
 import SignInPage from "./pages/SignInPage/SignInPage";
 import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+import ContactsPage from "./pages/ContactsPage/ContactsPage";
 
 import Footer from "./components/Footer/Footer";
 
@@ -76,6 +77,7 @@ class App extends Component {
                 currentUser ? <Redirect to="/" /> : <SignInPage />
               }
             />
+            <Route exact path="/contact" component={ContactsPage} />
           </Switch>
         </AppMain>
         <Footer />

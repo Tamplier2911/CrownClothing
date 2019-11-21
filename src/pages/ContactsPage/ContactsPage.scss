@@ -1,0 +1,17 @@
+.contacts {
+  width: 100%;
+  min-height: 80vh;
+  display: grid;
+
+  // replace this later
+  align-content: center;
+  justify-content: center;
+  & h1 {
+    color: #333;
+    font-weight: 300;
+  }
+
+  // grid-template-columns: 1fr;
+  // grid-template-rows: min-content;
+  // grid-row-gap: 3rem;
+}

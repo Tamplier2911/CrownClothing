@@ -21,22 +21,19 @@ const INITIAL_STATE = {
     {
       title: "women",
       imageUrl: "https://i.ibb.co/GCCdy8t/women.png",
-      linkUrl: "shop/women",
+      linkUrl: "shop/womens",
       id: 4
     },
     {
       title: "men",
       imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
-      linkUrl: "shop/men",
+      linkUrl: "shop/mens",
       id: 5
     }
   ]
 };
 
-const directoryReducer = (
-  state = INITIAL_STATE,
-  action
-) => {
+const directoryReducer = (state = INITIAL_STATE, action) => {
   switch (action.type) {
     default:
       return state;

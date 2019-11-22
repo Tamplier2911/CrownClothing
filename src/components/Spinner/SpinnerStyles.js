@@ -35,6 +35,7 @@ export const SpinnerContainer = styled.div`
   display: grid;
   justify-items: center;
   align-items: center;
+  min-height: 80vh;
 `;
 
 export const OuterSpinner = styled.div`
@@ -42,7 +43,7 @@ export const OuterSpinner = styled.div`
   width: 10vw;
   height: 10vw;
   -webkit-animation: 1s spin linear infinite;
-  animation: 1s spin linear infinite;
+  animation: 2s spin linear infinite;
   ${spin}
 `;
 

@@ -4,7 +4,7 @@ import React from "react";
 import { SpinnerContainer, OuterSpinner, InnerSpiner } from "./SpinnerStyles";
 
 const Spinner = WrappedComponent => ({ isLoading, ...otherProps }) => {
-  return isLoading ? (
+  return isLoading === true ? (
     <SpinnerContainer>
       <OuterSpinner></OuterSpinner>
       <InnerSpiner></InnerSpiner>

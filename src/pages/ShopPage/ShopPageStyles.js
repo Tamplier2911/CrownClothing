@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ShopPageContainer = styled.div`
   width: 100%;
-  min-height: 100vh;
+  min-height: 80vh;
 
   display: grid;
   grid-template-columns: 1fr;

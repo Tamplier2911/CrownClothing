@@ -18,7 +18,16 @@ import {
 // JS Rendering CSS
 import { ShopPageContainer } from "./ShopPageStyles";
 
+// HOC Spinner
+import Spinner from "../../components/Spinner/Spinner";
+const CollectionOverviewWithSpinner = Spinner(CollectionOverview);
+const CollectionPageWithSpinner = Spinner(CollectionPage);
+
 class ShopPage extends Component {
+  state = {
+    isLoading: true
+  };
+
   unsubscribeFromSnapshot = null;
 
   componentDidMount() {
@@ -28,30 +37,36 @@ class ShopPage extends Component {
     this.unsubscribeFromSnapshot = collectionRef.onSnapshot(async snapshot => {
       const collectionMap = await convertCollectionsSnapshotToMap(snapshot);
       updateCollection(collectionMap);
-      console.log(collectionMap);
+
+      this.setState({ isLoading: false });
     });
   }
   componentDidUpdate() {}
   componentWillUnmount() {}
 
   render() {
+    const { isLoading } = this.state;
     const { match } = this.props;
     return (
       <ShopPageContainer>
-        <Route exact path={`${match.path}`} component={CollectionOverview} />
-        <Route path={`${match.path}/:categoryId`} component={CollectionPage} />
+        <Route
+          exact
+          path={`${match.path}`}
+          // component={CollectionOverview}
+          render={props => (
+            <CollectionOverviewWithSpinner isLoading={isLoading} {...props} />
+          )}
+        />
+        <Route
+          path={`${match.path}/:categoryId`}
+          // component={CollectionPage}
+          render={props => (
+            <CollectionPageWithSpinner isLoading={isLoading} {...props} />
+          )}
+        />
       </ShopPageContainer>
     );
   }
 }
-
-// const ShopPage = ({ match }) => {
-//   return (
-//     <ShopPageContainer>
-//       <Route exact path={`${match.path}`} component={CollectionOverview} />
-//       <Route path={`${match.path}/:categoryId`} component={CollectionPage} />
-//     </ShopPageContainer>
-//   );
-// };
 
 export default connect(null, { updateCollection })(ShopPage);

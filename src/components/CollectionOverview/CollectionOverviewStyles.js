@@ -12,3 +12,9 @@ export const CollectionOverviewTitle = styled.h1`
   font-size: 3.2rem;
   font-weight: 300;
 `;
+
+export const CollectionOverviewNotFound = styled.div`
+  color: var(--black);
+  font-size: 3.2rem;
+  text-align: center;
+`;

@@ -31,6 +31,12 @@ export const selectShopCollection = collectionUrlParam =>
     collection ? collection[collectionUrlParam] : null
   );
 
+// selector for isFetching
+export const selectIsCollectionFetching = createSelector(
+  [selectShop],
+  shop => shop.isFetching
+);
+
 // storing as an array
 /*
 export const selectShopCollection = collectionUrlParam =>

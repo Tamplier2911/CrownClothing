@@ -50,7 +50,8 @@ class App extends Component {
   }
 
   componentWillUnmount() {
-    this.unsubscribeFromAuth = null;
+    // this.unsubscribeFromAuth = null;
+    this.unsubscribeFromAuth();
   }
 
   componentDidUpdate() {}

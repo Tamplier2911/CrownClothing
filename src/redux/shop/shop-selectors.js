@@ -37,6 +37,12 @@ export const selectIsCollectionFetching = createSelector(
   shop => shop.isFetching
 );
 
+// selector for checking if collections are fetched
+export const selectIsCollectionsLoaded = createSelector(
+  [selectShop],
+  shop => !!shop.collections
+);
+
 // storing as an array
 /*
 export const selectShopCollection = collectionUrlParam =>

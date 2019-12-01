@@ -14,12 +14,12 @@ export const fetchCollectionsStart = () => ({
   type: FETCH_COLLECTIONS_START
 });
 
-export const fetchCollectionSuccess = collectionsMap => ({
+export const fetchCollectionsSuccess = collectionsMap => ({
   type: FETCH_COLLECTIONS_SUCCESS,
   payload: collectionsMap
 });
 
-export const fetchCollectionFailure = errorMessage => ({
+export const fetchCollectionsFailure = errorMessage => ({
   type: FETCH_COLLECTIONS_FAILURE,
   payload: errorMessage
 });
@@ -40,8 +40,8 @@ export const fetchCollectionsStartAsync = () => {
       })
       .then(collectionsMap =>
         // sending payload with fetched collections to reducer
-        dispatch(fetchCollectionSuccess(collectionsMap))
+        dispatch(fetchCollectionsSuccess(collectionsMap))
       )
-      .catch(error => dispatch(fetchCollectionFailure(error.message)));
+      .catch(error => dispatch(fetchCollectionsFailure(error.message)));
   };
 };

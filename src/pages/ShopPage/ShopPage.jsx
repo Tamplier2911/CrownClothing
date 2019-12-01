@@ -10,15 +10,19 @@ import CollectionPageContainer from "../../pages/CollectionPage/CollectionPageCo
 import { connect } from "react-redux";
 
 // Shop Actions
-import { fetchCollectionsStartAsync } from "../../redux/shop/shop-actions";
+// import { fetchCollectionsStartAsync } from "../../redux/shop/shop-actions";
+import { fetchCollectionsStart } from "../../redux/shop/shop-actions";
 
 // JS Rendering CSS
 import { ShopPageContainer } from "./ShopPageStyles";
 
 class ShopPage extends Component {
   componentDidMount() {
-    const { fetchCollectionsStartAsync } = this.props;
-    fetchCollectionsStartAsync();
+    // const { fetchCollectionsStartAsync } = this.props;
+    // fetchCollectionsStartAsync();
+
+    const { fetchCollectionsStart } = this.props;
+    fetchCollectionsStart();
   }
   componentDidUpdate() {}
   componentWillUnmount() {}
@@ -47,6 +51,10 @@ class ShopPage extends Component {
   }
 }
 
+// export default connect(null, {
+//   fetchCollectionsStartAsync
+// })(ShopPage);
+
 export default connect(null, {
-  fetchCollectionsStartAsync
+  fetchCollectionsStart
 })(ShopPage);

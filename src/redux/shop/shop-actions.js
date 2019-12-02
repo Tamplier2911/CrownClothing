@@ -24,6 +24,7 @@ export const fetchCollectionsFailure = errorMessage => ({
   payload: errorMessage
 });
 
+// No longer using this, was designed for thunk, but using saga now
 export const fetchCollectionsStartAsync = () => {
   return dispatch => {
     const collectionRef = firestore.collection("collections");

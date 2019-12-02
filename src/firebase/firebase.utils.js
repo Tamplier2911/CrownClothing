@@ -87,16 +87,20 @@ export const convertCollectionsSnapshotToMap = async arrayOfCollectionSnapshot =
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
 // always pop up google window when we trigger select account menu.
-provider.setCustomParameters({ prompt: "select_account" });
+googleProvider.setCustomParameters({ prompt: "select_account" });
 
+/*
 export const signInWithGoogle = props => {
   if (props && props.history) {
     props.history.push("/");
   }
-  return auth.signInWithPopup(provider);
+  return auth.signInWithPopup(googleProvider);
 };
+*/
+
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;

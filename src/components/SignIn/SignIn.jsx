@@ -1,9 +1,13 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+import { googleSignInStart } from "../../redux/user/user-actions";
+
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
-import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+// import { auth, signInWithGoogle } from "../../firebase/firebase.utils";
+import { auth } from "../../firebase/firebase.utils";
 
 // JS Rendering CSS
 import {
@@ -46,6 +50,7 @@ class SignIn extends Component {
   };
 
   render() {
+    const { googleSignInStart } = this.props;
     return (
       <SignInContainer>
         <SignInTitle>I already have an account</SignInTitle>
@@ -75,7 +80,9 @@ class SignIn extends Component {
 
           <CustomButton
             styles="blue"
-            onClick={() => signInWithGoogle(this.props)}
+            type="button"
+            // onClick={() => signInWithGoogle(this.props)}
+            onClick={googleSignInStart}
           >
             Signn In With Google
           </CustomButton>
@@ -86,4 +93,5 @@ class SignIn extends Component {
 }
 
 // export default withRouter(SignIn);
-export default SignIn;
+
+export default connect(null, { googleSignInStart })(SignIn);

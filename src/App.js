@@ -17,11 +17,15 @@ import ContactsPage from "./pages/ContactsPage/ContactsPage";
 
 import Footer from "./components/Footer/Footer";
 
+/*
+
 import {
   auth,
   createUserProfileDocument
   // addCollectionAndDocuments
 } from "./firebase/firebase.utils";
+
+*/
 
 // JS Rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
@@ -32,6 +36,8 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    /*
+
     const { setCurrentUser } = this.props;
 
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
@@ -47,6 +53,7 @@ class App extends Component {
         setCurrentUser(userAuth);
       }
     });
+    */
   }
 
   componentWillUnmount() {

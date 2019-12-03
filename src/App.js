@@ -3,7 +3,7 @@ import React, { Component } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { setCurrentUser } from "./redux/user/user-actions";
+import { checkUserSession } from "./redux/user/user-actions";
 import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user-selectors";
 
@@ -36,6 +36,9 @@ class App extends Component {
   unsubscribeFromAuth = null;
 
   componentDidMount() {
+    const { checkUserSession } = this.props;
+    checkUserSession();
+
     /*
 
     const { setCurrentUser } = this.props;
@@ -106,5 +109,5 @@ const mapStateToProps = createStructuredSelector({
 export default connect(
   mapStateToProps,
   // mapDispatchToProps
-  { setCurrentUser }
+  { checkUserSession }
 )(App);

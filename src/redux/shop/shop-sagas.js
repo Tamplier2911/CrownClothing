@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from "redux-saga/effects";
+import { takeLatest, call, put, all } from "redux-saga/effects";
 import { shopActionTypes } from "./shop-types";
 
 import {
@@ -11,11 +11,7 @@ import {
   fetchCollectionsFailure
 } from "./shop-actions";
 
-const {
-  FETCH_COLLECTIONS_START
-  // FETCH_COLLECTIONS_SUCCESS,
-  // FETCH_COLLECTIONS_FAILURE
-} = shopActionTypes;
+const { FETCH_COLLECTIONS_START } = shopActionTypes;
 
 // yielding - yielding control over the saga back to the middleware
 
@@ -45,4 +41,8 @@ export function* fetchCollectionsAsync() {
 
 export function* fetchCollectionsStart() {
   yield takeLatest(FETCH_COLLECTIONS_START, fetchCollectionsAsync);
+}
+
+export function* shopSagas() {
+  yield all([call(fetchCollectionsStart)]);
 }

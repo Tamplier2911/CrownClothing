@@ -6,6 +6,8 @@ import {
   googleSignInFailure,
   emailSignInSuccess,
   emailSignInFailure,
+  formSignUpSuccess,
+  formSignUpFailure,
   checkUserSessionSuccess,
   checkUserSessionFailure,
   signUserOutSuccess,
@@ -23,7 +25,9 @@ const {
   GOOGLE_SIGN_IN_START,
   EMAIL_SIGN_IN_START,
   CHECK_USER_SESSION,
-  SIGN_USER_OUT_START
+  SIGN_USER_OUT_START,
+  FORM_SIGN_UP_START,
+  FORM_SIGN_UP_SUCCESS
 } = userActionTypes;
 
 /*
@@ -32,10 +36,11 @@ const {
 export function* getSnapshotFromUserAuth(
   userAuth,
   signInSuccess,
-  signInFailure
+  signInFailure,
+  additionalData
 ) {
   try {
-    const userRef = yield call(createUserProfileDocument, userAuth);
+    const userRef = yield call(createUserProfileDocument, userAuth, additionalData);
     const userSnapshot = yield userRef.get();
     yield put(signInSuccess({ id: userSnapshot.id, ...userSnapshot.data() }));
   } catch (error) {
@@ -106,6 +111,48 @@ export function* signInWithEmail({ payload: { email, password } }) {
   }
 }
 
+export function* signUpWithForm({ payload: { displayName, email, password } }) {
+  try {
+    // perform createUserWithEmailAndPassword, destructure user object from user ref
+    // user object contains = { displayName: null, email: "test@test.com", uid: "1kuBOkGxF0ZQQ"}
+    // nothing being created at this stage
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+
+    // saving our user data as well as additionalData of displayName
+    yield put(formSignUpSuccess({ user, additionalData: { displayName } }));
+
+    // now we need to listen for signup success in order to create new user and log user in.
+  } catch (error) {
+    // loading error to our state if there any
+    yield put(formSignUpFailure(error.message));
+  }
+}
+
+// this payload we get from what we passed from formSignedUpSuccess - user and additionalData
+export function* signInAfterSignUp({ payload: { user, additionalData } }) {
+  try {
+    // perform create user profile with user object, returning userRef
+    const userRef = yield call(createUserProfileDocument, user, additionalData);
+
+    // perform .get() on user ref, getting user snapshot
+    const userSnapshot = yield userRef.get();
+    // saving our user data to the state using emailSignInSuccessAction, spreading userSnapshot data with user id.
+    yield put(
+      emailSignInSuccess({ id: userSnapshot.id, ...userSnapshot.data() })
+    );
+
+    /*
+    
+    // part of refactoring for future
+    yield getSnapshotFromUserAuth(user, emailSignInSuccess, emailSignInFailure, additionalData);
+
+    */
+  } catch (error) {
+    // loading error to our state if there any
+    yield put(emailSignInFailure(error.message));
+  }
+}
+
 // saga performs checking on current user session
 export function* isUserAuthenticated() {
   try {
@@ -161,6 +208,14 @@ export function* onEmailSignInStart() {
   yield takeLatest(EMAIL_SIGN_IN_START, signInWithEmail);
 }
 
+export function* onFormSignUp() {
+  yield takeLatest(FORM_SIGN_UP_START, signUpWithForm);
+}
+
+export function* onFormSignUpSuccess() {
+  yield takeLatest(FORM_SIGN_UP_SUCCESS, signInAfterSignUp);
+}
+
 // saga listening for check usser session action creator and fires isUserAuthenticated saga
 export function* onCheckUserSession() {
   yield takeLatest(CHECK_USER_SESSION, isUserAuthenticated);
@@ -175,6 +230,8 @@ export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailSignInStart),
+    call(onFormSignUp),
+    call(onFormSignUpSuccess),
     call(onCheckUserSession),
     call(onSignUserOUtStart)
   ]);

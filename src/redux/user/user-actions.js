@@ -7,6 +7,9 @@ const {
   EMAIL_SIGN_IN_START,
   EMAIL_SIGN_IN_SUCCESS,
   EMAIL_SIGN_IN_FAILURE,
+  FORM_SIGN_UP_START,
+  FORM_SIGN_UP_SUCCESS,
+  FORM_SIGN_UP_FAILURE,
   CHECK_USER_SESSION,
   CHECK_USER_SESSION_SUCCESS,
   CHECK_USER_SESSION_FAILURE,
@@ -44,13 +47,28 @@ export const emailSignInFailure = errorMessage => ({
   payload: errorMessage
 });
 
+export const formSignUpStart = nameEmailAndPassword => ({
+  type: FORM_SIGN_UP_START,
+  payload: nameEmailAndPassword
+});
+
+export const formSignUpSuccess = user => ({
+  type: FORM_SIGN_UP_SUCCESS,
+  payload: user
+});
+
+export const formSignUpFailure = errorMessage => ({
+  type: FORM_SIGN_UP_FAILURE,
+  payload: errorMessage
+});
+
 export const checkUserSession = () => ({
   type: CHECK_USER_SESSION
 });
 
-export const checkUserSessionSuccess = user => ({
+export const checkUserSessionSuccess = ({ user, additionalData }) => ({
   type: CHECK_USER_SESSION_SUCCESS,
-  payload: user
+  payload: { user, additionalData }
 });
 
 export const checkUserSessionFailure = errorMessage => ({

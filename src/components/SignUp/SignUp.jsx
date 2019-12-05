@@ -1,10 +1,13 @@
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
+// import { withRouter } from "react-router-dom";
+
+import { connect } from "react-redux";
+import { formSignUpStart } from "../../redux/user/user-actions";
 
 import FormInput from "../FormInput/FormInput";
 import CustomButton from "../CustomButton/CustomButton";
 
-import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
+// import { auth, createUserProfileDocument } from "../../firebase/firebase.utils";
 
 // JS Rendering CSS
 import {
@@ -33,13 +36,23 @@ class SignUp extends Component {
   onSubmit = async e => {
     e.preventDefault();
     const { displayName, email, password, confirmPassword } = this.state;
+    const { formSignUpStart } = this.props;
 
     if (password !== confirmPassword) {
       alert("Confirmed password must match original.");
       return;
     }
 
+    formSignUpStart({
+      displayName: displayName,
+      email: email,
+      password: password
+    });
+
+    /*
+
     try {
+      
       const { user } = await auth.createUserWithEmailAndPassword(
         email,
         password
@@ -48,6 +61,7 @@ class SignUp extends Component {
       await createUserProfileDocument(user, {
         displayName
       });
+      
 
       this.setState({
         displayName: "",
@@ -57,10 +71,13 @@ class SignUp extends Component {
       });
 
       this.props.history.push("/");
+      
     } catch (err) {
       // Implement meaningful error handler.
       alert(err.message);
     }
+
+    */
   };
 
   onInputChange = e => {
@@ -70,7 +87,6 @@ class SignUp extends Component {
 
   render() {
     const { displayName, email, password, confirmPassword } = this.state;
-
     return (
       <SignUpContainer>
         <SignUpTitle>I do not have an account</SignUpTitle>
@@ -117,4 +133,5 @@ class SignUp extends Component {
   }
 }
 
-export default withRouter(SignUp);
+// export default withRouter(SignUp);
+export default connect(null, { formSignUpStart })(SignUp);

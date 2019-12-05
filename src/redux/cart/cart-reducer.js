@@ -1,14 +1,12 @@
 import { cartActionTypes } from "./cart-types";
-import {
-  addItemToCart,
-  decrementQuantity
-} from "./cart-utils";
+import { addItemToCart, decrementQuantity } from "./cart-utils";
 
 const {
   TOGGLE_CART_DROPDOWN,
   ADD_ITEM,
   REMOVE_ITEM,
-  DECREMENT_QUANTITY
+  DECREMENT_QUANTITY,
+  CLEAR_CART
 } = cartActionTypes;
 
 const INITIAL_STATE = {
@@ -26,10 +24,7 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case ADD_ITEM:
       return {
         ...state,
-        cartItems: addItemToCart(
-          state.cartItems,
-          action.payload
-        )
+        cartItems: addItemToCart(state.cartItems, action.payload)
       };
     case REMOVE_ITEM:
       return {
@@ -41,11 +36,10 @@ const cartReducer = (state = INITIAL_STATE, action) => {
     case DECREMENT_QUANTITY:
       return {
         ...state,
-        cartItems: decrementQuantity(
-          state.cartItems,
-          action.payload
-        )
+        cartItems: decrementQuantity(state.cartItems, action.payload)
       };
+    case CLEAR_CART:
+      return { ...state, cartItems: [] };
     default:
       return state;
   }

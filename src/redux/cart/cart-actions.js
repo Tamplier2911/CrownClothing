@@ -3,7 +3,8 @@ import { cartActionTypes } from "./cart-types";
 const {
   ADD_ITEM,
   REMOVE_ITEM,
-  DECREMENT_QUANTITY
+  DECREMENT_QUANTITY,
+  CLEAR_CART
 } = cartActionTypes;
 
 export const toggleCartDropdown = () => ({
@@ -23,4 +24,8 @@ export const removeItem = item => ({
 export const decrementQuantity = item => ({
   type: DECREMENT_QUANTITY,
   payload: item
+});
+
+export const clearCart = () => ({
+  type: CLEAR_CART
 });

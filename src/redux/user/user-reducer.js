@@ -7,6 +7,9 @@ const {
   // EMAIL_SIGN_IN_START,
   EMAIL_SIGN_IN_SUCCESS,
   EMAIL_SIGN_IN_FAILURE,
+  // FORM_SIGN_UP_START,
+  // FORM_SIGN_UP_SUCCESS,
+  FORM_SIGN_UP_FAILURE,
   // CHECK_USER_SESSION,
   CHECK_USER_SESSION_SUCCESS,
   CHECK_USER_SESSION_FAILURE,
@@ -29,6 +32,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
     //   return { ...state };
     // case CHECK_USER_SESSION:
     //   return { ...state };
+    // case FORM_SIGN_UP_SUCCESS:
     case GOOGLE_SIGN_IN_SUCCESS:
     case EMAIL_SIGN_IN_SUCCESS:
     case CHECK_USER_SESSION_SUCCESS:
@@ -37,6 +41,7 @@ const userReducer = (state = INITIAL_STATE, action) => {
       return { ...state, currentUser: null, errorMessage: null };
     case GOOGLE_SIGN_IN_FAILURE:
     case EMAIL_SIGN_IN_FAILURE:
+    case FORM_SIGN_UP_FAILURE:
     case CHECK_USER_SESSION_FAILURE:
     case SIGN_USER_OUT_FAILURE:
       return { ...state, errorMessage: action.payload };

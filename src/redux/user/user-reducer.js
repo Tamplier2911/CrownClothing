@@ -9,7 +9,10 @@ const {
   EMAIL_SIGN_IN_FAILURE,
   // CHECK_USER_SESSION,
   CHECK_USER_SESSION_SUCCESS,
-  CHECK_USER_SESSION_FAILURE
+  CHECK_USER_SESSION_FAILURE,
+  // SIGN_USER_OUT_START,
+  SIGN_USER_OUT_SUCCESS,
+  SIGN_USER_OUT_FAILURE
 } = userActionTypes;
 
 const INITIAL_STATE = {
@@ -30,9 +33,12 @@ const userReducer = (state = INITIAL_STATE, action) => {
     case EMAIL_SIGN_IN_SUCCESS:
     case CHECK_USER_SESSION_SUCCESS:
       return { ...state, currentUser: action.payload, errorMessage: null };
+    case SIGN_USER_OUT_SUCCESS:
+      return { ...state, currentUser: null, errorMessage: null };
     case GOOGLE_SIGN_IN_FAILURE:
     case EMAIL_SIGN_IN_FAILURE:
     case CHECK_USER_SESSION_FAILURE:
+    case SIGN_USER_OUT_FAILURE:
       return { ...state, errorMessage: action.payload };
     default:
       return state;

@@ -7,7 +7,9 @@ import {
   emailSignInSuccess,
   emailSignInFailure,
   checkUserSessionSuccess,
-  checkUserSessionFailure
+  checkUserSessionFailure,
+  signUserOutSuccess,
+  signUserOutFailure
 } from "./user-actions";
 
 import {
@@ -20,7 +22,8 @@ import {
 const {
   GOOGLE_SIGN_IN_START,
   EMAIL_SIGN_IN_START,
-  CHECK_USER_SESSION
+  CHECK_USER_SESSION,
+  SIGN_USER_OUT_START
 } = userActionTypes;
 
 /*
@@ -134,6 +137,20 @@ export function* isUserAuthenticated() {
   }
 }
 
+// saga signs user out once signUserOutStart action is fired.
+function* signUserOut() {
+  try {
+    // perform signOut() on auth.
+    yield auth.signOut();
+
+    // trigger signUserOutSuccess action creator, set currentUser to null
+    yield put(signUserOutSuccess());
+  } catch (error) {
+    // trigger signUserOutFailure action creator, send error message to state
+    yield put(signUserOutFailure(error.message));
+  }
+}
+
 // saga listening for sign in start to happen, then run signInWithGoogle saga
 export function* onGoogleSignInStart() {
   yield takeLatest(GOOGLE_SIGN_IN_START, signInWithGoogle);
@@ -149,11 +166,16 @@ export function* onCheckUserSession() {
   yield takeLatest(CHECK_USER_SESSION, isUserAuthenticated);
 }
 
+export function* onSignUserOUtStart() {
+  yield takeLatest(SIGN_USER_OUT_START, signUserOut);
+}
+
 // bundling sagas, sending to root
 export function* userSagas() {
   yield all([
     call(onGoogleSignInStart),
     call(onEmailSignInStart),
-    call(onCheckUserSession)
+    call(onCheckUserSession),
+    call(onSignUserOUtStart)
   ]);
 }

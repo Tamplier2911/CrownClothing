@@ -9,7 +9,10 @@ const {
   EMAIL_SIGN_IN_FAILURE,
   CHECK_USER_SESSION,
   CHECK_USER_SESSION_SUCCESS,
-  CHECK_USER_SESSION_FAILURE
+  CHECK_USER_SESSION_FAILURE,
+  SIGN_USER_OUT_START,
+  SIGN_USER_OUT_SUCCESS,
+  SIGN_USER_OUT_FAILURE
 } = userActionTypes;
 
 export const googleSignInStart = () => ({
@@ -52,5 +55,18 @@ export const checkUserSessionSuccess = user => ({
 
 export const checkUserSessionFailure = errorMessage => ({
   type: CHECK_USER_SESSION_FAILURE,
+  payload: errorMessage
+});
+
+export const signUserOutStart = () => ({
+  type: SIGN_USER_OUT_START
+});
+
+export const signUserOutSuccess = () => ({
+  type: SIGN_USER_OUT_SUCCESS
+});
+
+export const signUserOutFailure = errorMessage => ({
+  type: SIGN_USER_OUT_FAILURE,
   payload: errorMessage
 });

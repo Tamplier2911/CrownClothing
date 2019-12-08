@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Route } from "react-router-dom";
 
 // Containers Wrapped CollectionOverview and CollectionPage with Spinner HOC
@@ -15,6 +16,30 @@ import { fetchCollectionsStart } from "../../redux/shop/shop-actions";
 
 // JS Rendering CSS
 import { ShopPageContainer } from "./ShopPageStyles";
+
+const ShopPage = ({ match, fetchCollectionsStart }) => {
+  useEffect(() => {
+    fetchCollectionsStart();
+  }, [fetchCollectionsStart]);
+
+  return (
+    <ShopPageContainer>
+      <Route
+        exact
+        path={`${match.path}`}
+        component={CollectionOverviewContainer}
+      />
+      <Route
+        path={`${match.path}/:categoryId`}
+        component={CollectionPageContainer}
+      />
+    </ShopPageContainer>
+  );
+};
+
+export default connect(null, { fetchCollectionsStart })(ShopPage);
+
+/*
 
 class ShopPage extends Component {
   componentDidMount() {
@@ -58,3 +83,5 @@ class ShopPage extends Component {
 export default connect(null, {
   fetchCollectionsStart
 })(ShopPage);
+
+*/

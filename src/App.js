@@ -1,5 +1,6 @@
 // import "./App.scss";
-import React, { Component } from "react";
+// import React, { Component } from "react";
+import React, { useEffect } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -17,51 +18,78 @@ import ContactsPage from "./pages/ContactsPage/ContactsPage";
 
 import Footer from "./components/Footer/Footer";
 
-/*
-
-import {
-  auth,
-  createUserProfileDocument
-  // addCollectionAndDocuments
-} from "./firebase/firebase.utils";
-
-*/
+// import {
+//   auth,
+//   createUserProfileDocument
+//   // addCollectionAndDocuments
+// } from "./firebase/firebase.utils";
 
 // JS Rendering CSS
 import { AppContainer, AppMain } from "./AppStyles";
 
 // import { selectShopCollectionsAsArray } from "./redux/shop/shop-selectors";
 
+const App = ({ currentUser, checkUserSession }) => {
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
+
+  return (
+    <AppContainer>
+      <Header />
+      <AppMain>
+        <Switch>
+          <Route exact path="/" component={HomePage} />
+          <Route path="/shop" component={ShopPage} />
+          <Route exact path="/checkout" component={CheckoutPage} />
+          <Route
+            exact
+            path="/sign-in"
+            render={() => (currentUser ? <Redirect to="/" /> : <SignInPage />)}
+          />
+          <Route exact path="/contact" component={ContactsPage} />
+        </Switch>
+      </AppMain>
+      <Footer />
+    </AppContainer>
+  );
+};
+
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser
+});
+
+export default connect(mapStateToProps, { checkUserSession })(App);
+
+/*
+
 class App extends Component {
-  unsubscribeFromAuth = null;
+  // unsubscribeFromAuth = null;
 
   componentDidMount() {
     const { checkUserSession } = this.props;
     checkUserSession();
 
-    /*
+    // const { setCurrentUser } = this.props;
 
-    const { setCurrentUser } = this.props;
-
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
-      if (userAuth) {
-        const userRef = await createUserProfileDocument(userAuth);
-        userRef.onSnapshot(snapShot =>
-          setCurrentUser({
-            id: snapShot.id,
-            ...snapShot.data()
-          })
-        );
-      } else {
-        setCurrentUser(userAuth);
-      }
-    });
-    */
+    // this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    //   if (userAuth) {
+    //     const userRef = await createUserProfileDocument(userAuth);
+    //     userRef.onSnapshot(snapShot =>
+    //       setCurrentUser({
+    //         id: snapShot.id,
+    //         ...snapShot.data()
+    //       })
+    //     );
+    //   } else {
+    //     setCurrentUser(userAuth);
+    //   }
+    // });
   }
 
   componentWillUnmount() {
     // this.unsubscribeFromAuth = null;
-    this.unsubscribeFromAuth();
+    // this.unsubscribeFromAuth();
   }
 
   componentDidUpdate() {}
@@ -111,3 +139,5 @@ export default connect(
   // mapDispatchToProps
   { checkUserSession }
 )(App);
+
+*/

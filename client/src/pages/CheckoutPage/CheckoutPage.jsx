@@ -21,6 +21,8 @@ import {
   CheckoutPageItems,
   CheckoutPageEmpty,
   CheckoutPageFooter,
+  CheckoutPageWarning,
+  CheckoutPageCard,
   CheckoutPageTotal
 } from "./CheckoutPageStyles";
 
@@ -48,6 +50,10 @@ const CheckoutPage = ({ cartItems, total }) => {
         <StripeButton price={total} />
         <CheckoutPageTotal>TOTAL: ${total}</CheckoutPageTotal>
       </CheckoutPageFooter>
+      <CheckoutPageWarning>
+        *In order to test payment - please use following card:{" "}
+        <CheckoutPageCard>4242 4242 4242 4242 | 10 / 20 | 123</CheckoutPageCard>
+      </CheckoutPageWarning>
     </CheckoutPageContainer>
   );
 };

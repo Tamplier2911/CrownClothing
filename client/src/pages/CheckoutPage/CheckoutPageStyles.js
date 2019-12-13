@@ -85,6 +85,18 @@ export const CheckoutPageFooter = styled.div`
   }
 `;
 
+export const CheckoutPageWarning = styled.div`
+  grid-column: 1 / -1;
+  font-size: 1.8rem;
+  line-height: 1.4;
+  text-align: center;
+`;
+
+export const CheckoutPageCard = styled.span`
+  color: orangered;
+  font-size: 2rem;
+`;
+
 export const CheckoutPageTotal = styled.div`
   grid-column: 5 / -1;
   font-size: 3.2rem;

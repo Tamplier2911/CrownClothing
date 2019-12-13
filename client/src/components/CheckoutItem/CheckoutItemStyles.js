@@ -46,6 +46,10 @@ export const CheckoutItemChevron = styled.div`
   &:not(:last-child) {
     margin-right: 0.2rem;
   }
+
+  &:nth-child(3) {
+    margin-left: 0.2rem;
+  }
 `;
 
 export const CheckoutItemQuanNumber = styled.span``;

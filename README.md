@@ -8,4 +8,4 @@ Crown Clothing is a online shop, created by Artem Nikolaiev, for React.js study 
 
 App is currently still in development state.
 
-Perview of latest build is up and running at: https://crown-clothing-s.herokuapp.com/
+Perview of latest build is up and running at: https://crwn-clothing-s.herokuapp.com/

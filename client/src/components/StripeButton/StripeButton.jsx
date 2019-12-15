@@ -27,15 +27,16 @@ const StripeButton = ({ price }) => {
         amount: $${res.data.success.amount / 100}`);
       // console.log(res, "response success");
     } catch (error) {
-      const err = JSON.parse(error);
+      // const err = JSON.parse(error);
       /*
       alert(`Error! 
         error: ${err.name} 
         message: ${err.message}`);
       */
       // console.log(err, "response error");
-      alert(`There was an issues with your payment, please try again.
-      ${err.message}`);
+      alert(
+        `There was an issues with your payment, please try again. ${error.message}`
+      );
     }
 
     // console.log(token, "token");

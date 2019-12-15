@@ -66,9 +66,11 @@ export const checkUserSession = () => ({
   type: CHECK_USER_SESSION
 });
 
-export const checkUserSessionSuccess = ({ user, additionalData }) => ({
+export const checkUserSessionSuccess = user => ({
+  // export const checkUserSessionSuccess = ({ user, additionalData }) => ({
   type: CHECK_USER_SESSION_SUCCESS,
-  payload: { user, additionalData }
+  // payload: { user, additionalData }
+  payload: user
 });
 
 export const checkUserSessionFailure = errorMessage => ({

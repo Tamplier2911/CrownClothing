@@ -54,8 +54,6 @@ class UserExampleDynamicContext extends Component {
   }
 }
 
-export default UserExampleDynamicContext;
-
 // Taking use of dynamic context in header component by useContext
 
 const Header = () => {
@@ -66,3 +64,5 @@ const Header = () => {
     </div>
   );
 };
+
+export default UserExampleDynamicContext;

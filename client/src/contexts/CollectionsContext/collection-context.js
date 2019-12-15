@@ -1,5 +1,5 @@
 import { createContext } from "react";
-import SHOP_DATA from "./shop-collections";
+import SHOP_DATA from "./collections";
 
 const CollectionContext = createContext(SHOP_DATA);
 

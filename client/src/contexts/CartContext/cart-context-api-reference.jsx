@@ -8,14 +8,14 @@ import CartContext from "./cart-context";
 // which going to be key aspect in re-rendering parent component.
 
 // We desctructure initial value of hidden and setHidden,
-// setHidden is going to be a function that will toggle value of hidden to oposit.
+// setHidden is going to be a function that will toggle value of hidden to opposite.
 
 // Now the key part - we pass values of hidden and setHidden as initial values of
 // Context.Provider, therefore inside of CartIcon we consuming Context using useContext
 // and performing toggling CartDropdown as onClick function.
 
 // This way every time we click on CartIcon, we enforce setState(), which cause component to:
-// 1) change value of hidden to oposite.
+// 1) change value of hidden to opposite.
 // 2) re-render header (parent component).
 // 3) add new values of hidden and toggleHidden to cart context dynamically.
 // 4) either render or hide cart CartDropdown menu.
@@ -28,6 +28,7 @@ const HeaderExampleComponent = () => {
       <CartContext.Provider
         value={{
           hidden: hidden,
+          cartItems: [],
           toggleHidden: toggleHidden
         }}
       >

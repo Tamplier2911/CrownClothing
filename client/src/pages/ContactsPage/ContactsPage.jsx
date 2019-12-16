@@ -1,4 +1,4 @@
-import "./ContactsPage.scss";
+// import "./ContactsPage.scss";
 import React from "react";
 
 import { ContactsContainer, ContactsParagraph } from "./ContactsPageStyles";

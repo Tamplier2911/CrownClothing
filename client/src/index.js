@@ -1,3 +1,4 @@
+/*
 import "./index.scss";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -24,7 +25,7 @@ ReactDOM.render(
   document.querySelector("#root")
 );
 
-/*
+*/
 
 import "./index.scss";
 import React from "react";
@@ -55,12 +56,29 @@ import { createHttpLink } from "apollo-link-http";
 import { InMemoryCache } from "apollo-cache-inmemory";
 
 // bundle of libs to handle and simplify appolo functionality
-import { ApolloClient, gql } from "apollo-boost";
+// import { ApolloClient, gql } from "apollo-boost";
+import { ApolloClient } from "apollo-boost";
 
 // equivalent to client.query() top erform query to graphQL server
-import { Query } from "react-apollo";
+// import { Query } from "react-apollo";
+
+// resolvers and types
+import { resolvers, typeDefs } from "./graphql/resolvers";
 
 ///////////////////////////////////////////////////////////////
+
+// TESTING COMPONENTS
+
+import {
+  LocalStateQueryComponent,
+  LocalStateMutationComponent
+} from "./apollo/local-mutations-with-apollo";
+
+import ComponentWithFetchedDynamicallyData from "./apollo/dynamic-with-apollo";
+
+import ComponentWithFetchedData from "./apollo/static-with-apollo";
+
+////////////////////////////////////////////////////////////////
 
 // establishing connection to a back-end
 const httpLink = createHttpLink({
@@ -73,111 +91,18 @@ const cache = new InMemoryCache();
 // creating apollo client
 const client = new ApolloClient({
   link: httpLink,
-  cache: cache
+  cache: cache,
+  resolvers: resolvers,
+  typeDefs: typeDefs
 });
 
-// testing apollo client by requesting data from server
-client
-  .query({
-    query: gql`
-      {
-        getCollectionsByTitle(title: "hats") {
-          id
-          title
-          items {
-            id
-            name
-            price
-            imageUrl
-          }
-        }
-      }
-    `
-  })
-  .then(res => console.log(res));
-
-// get all collections from apollo server
-const GET_COLLECTIONS = gql`
-  {
-    collections {
-      id
-      title
-      items {
-        id
-        name
-        imageUrl
-      }
-    }
+// Laverage local state in Apollo
+// Cache - is our local state
+client.writeData({
+  data: {
+    cartHidden: true
   }
-`;
-
-// create wrapper component which returns Query component, that gets query value as query property
-// query then will return a function, where we destructure loading, error and data out of query object
-// depends on loading, error or data, we return loading spinner, error popup or fetched collections
-const ComponentWithFetchedData = () => (
-  <Query query={GET_COLLECTIONS}>
-    {({ loading, error, data }) => {
-      if (loading) {
-        console.log(loading);
-        return <div>Loading spinner...</div>;
-      } else if (error) {
-        console.log(error);
-        return <div>{error.message}</div>;
-      } else {
-        console.log(data);
-        console.log(data.collections);
-        return data.collections.map(collection => (
-          <div key={collection.id}>{collection.title}</div>
-        ));
-      }
-    }}
-  </Query>
-);
-
-// specific syntax is GraphQL language, required in order to pass parameter in, which is a must
-// in order to pass parameter to a query we use variables property, which takes object of values
-const GET_COLLECTION_BY_TITLE = gql`
-  query getCollectionsByTitle($title: String!) {
-    getCollectionsByTitle(title: $title) {
-      id
-      title
-      items {
-        id
-        name
-        price
-        imageUrl
-      }
-    }
-  }
-`;
-
-// create wrapper component which returns Query component, that gets query value as query property
-// as well as object with required query parameters in a varibles property
-// query then will return a function, where we destructure loading, error and data out of query object
-// depends on loading, error or data, we return loading spinner, error popup or fetched collections
-const ComponentWithFetchedDynamicallyData = () => (
-  <Query
-    query={GET_COLLECTION_BY_TITLE}
-    variables={{ title: "hats" //<== dynamic data here}}
-  >
-    {({ loading, error, data }) => {
-      if (loading) {
-        console.log(loading);
-        return <div>Loading...</div>;
-      } else if (error) {
-        console.log(error);
-        return <div>{error.message}</div>;
-      } else {
-        console.log(data);
-        return (
-          <div key={data.getCollectionsByTitle.id}>
-            {data.getCollectionsByTitle.title}
-          </div>
-        );
-      }
-    }}
-  </Query>
-);
+});
 
 // provide access to context of data that stored in apollo +
 // get ability make requests with apollo to app
@@ -189,11 +114,11 @@ ReactDOM.render(
           <App />
           <ComponentWithFetchedData />
           <ComponentWithFetchedDynamicallyData />
+          <LocalStateQueryComponent />
+          <LocalStateMutationComponent />
         </PersistGate>
       </BrowserRouter>
     </Provider>
   </ApolloProvider>,
   document.querySelector("#root")
 );
-
-*/

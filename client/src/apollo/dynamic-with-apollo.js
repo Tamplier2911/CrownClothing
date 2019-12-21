@@ -28,17 +28,17 @@ const GET_COLLECTION_BY_TITLE = gql`
 const ComponentWithFetchedDynamicallyData = () => (
   <Query
     query={GET_COLLECTION_BY_TITLE}
-    variables={{ title: "hats" /* dynamic data here */ }}
+    variables={{ title: "hats" }} // <== dynamic data here e.g. {title: match.params.collectionId}
   >
     {({ loading, error, data }) => {
       if (loading) {
-        console.log(loading);
+        // console.log(loading);
         return <div>Loading...</div>;
       } else if (error) {
-        console.log(error);
+        // console.log(error);
         return <div>{error.message}</div>;
       } else {
-        console.log(data);
+        // console.log(data);
         return (
           <div key={data.getCollectionsByTitle.id}>
             {data.getCollectionsByTitle.title}

@@ -28,14 +28,14 @@ const ComponentWithFetchedData = () => (
   <Query query={GET_COLLECTIONS}>
     {({ loading, error, data }) => {
       if (loading) {
-        console.log(loading);
+        // console.log(loading);
         return <div>Loading spinner...</div>;
       } else if (error) {
-        console.log(error);
+        // console.log(error);
         return <div>{error.message}</div>;
       } else {
-        console.log(data);
-        console.log(data.collections);
+        // console.log(data);
+        // console.log(data.collections);
         return data.collections.map(collection => (
           <div key={collection.id}>{collection.title}</div>
         ));

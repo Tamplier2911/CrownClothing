@@ -1,4 +1,4 @@
-/* 
+/*
 
 // GRAPH QL + APOLLO REFERENCE
 
@@ -33,6 +33,9 @@ import { InMemoryCache } from "apollo-cache-inmemory";
 // bundle of libs to handle and simplify appolo functionality
 import { ApolloClient } from "apollo-boost";
 
+// import resolvers and types
+import { resolvers, typeDefs } from "../graphql/resolvers";
+
 ///////////////////////////////////////////////////////////////
 
 // establishing connection to a back-end
@@ -46,7 +49,17 @@ const cache = new InMemoryCache();
 // creating apollo client
 const client = new ApolloClient({
   link: httpLink,
-  cache: cache
+  cache: cache,
+  resolvers: resolvers,
+  typeDefs: typeDefs
+});
+
+// Laverage local state in Apollo
+// Cache - is our local state
+client.writeData({
+  data: {
+    cartHidden: true
+  }
 });
 
 // testing apollo client by requesting data from server

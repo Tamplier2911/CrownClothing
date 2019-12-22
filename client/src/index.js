@@ -1,4 +1,3 @@
-/*
 import "./index.scss";
 import React from "react";
 import ReactDOM from "react-dom";
@@ -25,7 +24,7 @@ ReactDOM.render(
   document.querySelector("#root")
 );
 
-*/
+/*
 
 import "./index.scss";
 import React from "react";
@@ -74,9 +73,11 @@ import {
   LocalStateMutationComponent
 } from "./apollo/local-mutations-with-apollo";
 
-import ComponentWithFetchedDynamicallyData from "./apollo/dynamic-with-apollo";
+import { LocalStateCartItemsMutationAdd } from "./apollo/local-mutations-dynamic-with-apollo";
 
-import ComponentWithFetchedData from "./apollo/static-with-apollo";
+import ComponentWithFetchedDynamicallyData from "./apollo/queries-dynamic-with-apollo";
+
+import ComponentWithFetchedData from "./apollo/queries-static-with-apollo";
 
 ////////////////////////////////////////////////////////////////
 
@@ -100,7 +101,8 @@ const client = new ApolloClient({
 // Cache - is our local state
 client.writeData({
   data: {
-    cartHidden: true
+    cartHidden: true,
+    cartItems: []
   }
 });
 
@@ -116,9 +118,12 @@ ReactDOM.render(
           <ComponentWithFetchedDynamicallyData />
           <LocalStateQueryComponent />
           <LocalStateMutationComponent />
+          <LocalStateCartItemsMutationAdd />
         </PersistGate>
       </BrowserRouter>
     </Provider>
   </ApolloProvider>,
   document.querySelector("#root")
 );
+
+*/

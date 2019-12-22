@@ -5,7 +5,7 @@ import { gql } from "apollo-boost";
 // MUTATION gql string to local state in order to perform state mutation
 const TOGGLE_CART_HIDDEN = gql`
   mutation ToggleCartHidden {
-    toggleCartHidden @client
+    toggleCartHiddenMut @client
   }
 `;
 
@@ -13,9 +13,9 @@ const TOGGLE_CART_HIDDEN = gql`
 // that goign to perform mutations
 export const LocalStateMutationComponent = () => (
   <Mutation mutation={TOGGLE_CART_HIDDEN}>
-    {toggleCartHidden => {
+    {toggleCartHiddenMut => {
       // can either return component wich recieve toggleCartHidden "action creator"
-      return <button onClick={toggleCartHidden}>Mutate</button>;
+      return <button onClick={toggleCartHiddenMut}>Mutate</button>;
     }}
   </Mutation>
 );
@@ -44,11 +44,7 @@ export const LocalStateQueryComponent = () => (
       if (loading) {
         return <div>...Loading Spinner</div>;
       } else {
-        return (
-          <div>
-            <LocalStateLeverage hidden={cartHidden} />
-          </div>
-        );
+        return <LocalStateLeverage hidden={cartHidden} />;
       }
     }}
   </Query>

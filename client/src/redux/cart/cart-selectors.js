@@ -14,18 +14,14 @@ export const selectCartItems = createSelector(
 // item quantity
 export const selectCartItemsCount = createSelector(
   [selectCartItems],
-  cartItem =>
-    cartItem.reduce((acc, item) => acc + item.quantity, 0)
+  cartItems => cartItems.reduce((acc, item) => acc + item.quantity, 0)
 );
 
 // price total
 export const selectCartItemsPriceTotal = createSelector(
   [selectCartItems],
-  cartItem =>
-    cartItem.reduce(
-      (acc, item) => acc + item.quantity * item.price,
-      0
-    )
+  cartItems =>
+    cartItems.reduce((acc, item) => acc + item.quantity * item.price, 0)
 );
 
 // dropdown hidden true/false

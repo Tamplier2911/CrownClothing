@@ -21,7 +21,7 @@ import Footer from "./components/Footer/Footer";
 // import {
 //   auth,
 //   createUserProfileDocument
-//   // addCollectionAndDocuments
+//   addCollectionAndDocuments
 // } from "./firebase/firebase.utils";
 
 // JS Rendering CSS

@@ -14,18 +14,13 @@ export const addItemToCart = (cartItems, cartItemToAdd) => {
   return [...cartItems, { ...cartItemToAdd, quantity: 1 }];
 };
 
-export const decrementQuantity = (
-  cartItems,
-  cartItemToDecrement
-) => {
+export const decrementQuantity = (cartItems, cartItemToDecrement) => {
   const decrementItem = cartItems.find(
     cartItem => cartItem.id === cartItemToDecrement.id
   );
 
   if (decrementItem.quantity === 1) {
-    return cartItems.filter(
-      cartItem => cartItem.id !== decrementItem.id
-    );
+    return cartItems.filter(cartItem => cartItem.id !== decrementItem.id);
   }
 
   return cartItems.map(cartItem =>
@@ -33,4 +28,12 @@ export const decrementQuantity = (
       ? { ...cartItem, quantity: cartItem.quantity - 1 }
       : cartItem
   );
+};
+
+export const getCartTotalCount = cartItems => {
+  return cartItems.reduce((acc, item) => acc + item.quantity, 0);
+};
+
+export const getCartTotalPrice = cartItems => {
+  return cartItems.reduce((acc, item) => acc + item.price * item.quantity, 0);
 };

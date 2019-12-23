@@ -1,5 +1,10 @@
 import { gql } from "apollo-boost";
-import { addItemToCart, decrementQuantity } from "./cart-utils";
+import {
+  addItemToCart,
+  decrementQuantity,
+  getCartTotalCount,
+  getCartTotalPrice
+} from "./cart-utils";
 
 // type definitions
 // extend all existing mutations that we have access to from back-end
@@ -36,6 +41,20 @@ const GET_CART_ITEMS = gql`
   }
 `;
 
+// read current amount of all items including quantity of each
+const GET_ITEM_COUNT = gql`
+  {
+    itemCount @client
+  }
+`;
+
+// read current amount of price of all items in cart including quantity of each
+const GET_TOTAL_PRICE = gql`
+  {
+    totalPrice @client
+  }
+`;
+
 // resolvers
 // _root        - top level object  (parent object)
 // _args        - arguments that we get access to
@@ -65,6 +84,22 @@ export const resolvers = {
       });
       // add new item to cartItems levereging helper function - save new value of cart items
       const newCartItems = addItemToCart(data.cartItems, _args.item);
+
+      // n.b. - we perform just additational mutation queries in body of one mutation
+      // so we do not need to create new mutation
+
+      // re-calculate total item count using mutation query
+      _contexts.cache.writeQuery({
+        query: GET_ITEM_COUNT,
+        data: { itemCount: getCartTotalCount(newCartItems) }
+      });
+
+      // re-calculate total price for items in cart using mutation query
+      _contexts.cache.writeQuery({
+        query: GET_TOTAL_PRICE,
+        data: { totalPrice: getCartTotalPrice(newCartItems) }
+      });
+
       // perform mutation query, same new value of cart items to cartItems & return it
       _contexts.cache.writeQuery({
         query: GET_CART_ITEMS,
@@ -79,6 +114,22 @@ export const resolvers = {
       });
       // remove item from cartItems levereging helper function - save new value
       const newCartItems = decrementQuantity(data.cartItems, _args.item);
+
+      // n.b. - we perform just additational mutation queries in body of one mutation
+      // so we do not need to create new mutation
+
+      // re-calculate total item count using mutation query
+      _contexts.cache.writeQuery({
+        query: GET_ITEM_COUNT,
+        data: { itemCount: getCartTotalCount(newCartItems) }
+      });
+
+      // re-calculate total price for items in cart using mutation query
+      _contexts.cache.writeQuery({
+        query: GET_TOTAL_PRICE,
+        data: { totalPrice: getCartTotalPrice(newCartItems) }
+      });
+
       // perform mutation query, revwrite value of cartItems to newCartItems & return it
       _contexts.cache.writeQuery({
         query: GET_CART_ITEMS,

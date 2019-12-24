@@ -13,7 +13,7 @@ import { store, persistor } from "./redux/store";
 // redux-persist
 import { PersistGate } from "redux-persist/integration/react";
 
-//  JS Rendered Styles
+// JS Rendered Styles
 import { GlobalStyle } from "./indexStyles";
 
 ReactDOM.render(

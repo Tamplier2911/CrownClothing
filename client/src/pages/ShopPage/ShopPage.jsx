@@ -21,7 +21,6 @@ const ShopPage = ({ match, fetchCollectionsStart }) => {
   useEffect(() => {
     fetchCollectionsStart();
   }, [fetchCollectionsStart]);
-
   return (
     <ShopPageContainer>
       <Route

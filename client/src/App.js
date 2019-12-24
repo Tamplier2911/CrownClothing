@@ -1,6 +1,6 @@
 // import "./App.scss";
 // import React, { Component } from "react";
-import React, { useEffect } from "react";
+import React, { useEffect, lazy, Suspense } from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
@@ -9,14 +9,14 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "./redux/user/user-selectors";
 
 import Header from "./components/Header/Header.jsx";
-
-import HomePage from "./pages/HomePage/HomePage";
-import ShopPage from "./pages/ShopPage/ShopPage";
-import SignInPage from "./pages/SignInPage/SignInPage";
-import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
-import ContactsPage from "./pages/ContactsPage/ContactsPage";
-
+// import HomePage from "./pages/HomePage/HomePage";
+// import ShopPage from "./pages/ShopPage/ShopPage";
+// import SignInPage from "./pages/SignInPage/SignInPage";
+// import CheckoutPage from "./pages/CheckoutPage/CheckoutPage";
+// import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import Footer from "./components/Footer/Footer";
+
+import { LazzySpinner } from "./components/Spinner/Spinner";
 
 // import {
 //   auth,
@@ -29,6 +29,13 @@ import { AppContainer, AppMain } from "./AppStyles";
 
 // import { selectShopCollectionsAsArray } from "./redux/shop/shop-selectors";
 
+// implementation of code-splitting with React.lazy and <Suspense/> component
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const ShopPage = lazy(() => import("./pages/ShopPage/ShopPage"));
+const SignInPage = lazy(() => import("./pages/SignInPage/SignInPage"));
+const CheckOutPage = lazy(() => import("./pages/CheckoutPage/CheckoutPage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
+
 const App = ({ currentUser, checkUserSession }) => {
   useEffect(() => {
     checkUserSession();
@@ -39,15 +46,19 @@ const App = ({ currentUser, checkUserSession }) => {
       <Header />
       <AppMain>
         <Switch>
-          <Route exact path="/" component={HomePage} />
-          <Route path="/shop" component={ShopPage} />
-          <Route exact path="/checkout" component={CheckoutPage} />
-          <Route
-            exact
-            path="/sign-in"
-            render={() => (currentUser ? <Redirect to="/" /> : <SignInPage />)}
-          />
-          <Route exact path="/contact" component={ContactsPage} />
+          <Suspense fallback={<LazzySpinner />}>
+            <Route exact path="/" component={HomePage} />
+            <Route path="/shop" component={ShopPage} />
+            <Route exact path="/checkout" component={CheckOutPage} />
+            <Route
+              exact
+              path="/sign-in"
+              render={() =>
+                currentUser ? <Redirect to="/" /> : <SignInPage />
+              }
+            />
+            <Route exact path="/contact" component={ContactsPage} />
+          </Suspense>
         </Switch>
       </AppMain>
       <Footer />

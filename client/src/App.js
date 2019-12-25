@@ -16,6 +16,7 @@ import Header from "./components/Header/Header.jsx";
 // import ContactsPage from "./pages/ContactsPage/ContactsPage";
 import Footer from "./components/Footer/Footer";
 
+import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary";
 import { LazzySpinner } from "./components/Spinner/Spinner";
 
 // import {
@@ -46,19 +47,21 @@ const App = ({ currentUser, checkUserSession }) => {
       <Header />
       <AppMain>
         <Switch>
-          <Suspense fallback={<LazzySpinner />}>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/shop" component={ShopPage} />
-            <Route exact path="/checkout" component={CheckOutPage} />
-            <Route
-              exact
-              path="/sign-in"
-              render={() =>
-                currentUser ? <Redirect to="/" /> : <SignInPage />
-              }
-            />
-            <Route exact path="/contact" component={ContactsPage} />
-          </Suspense>
+          <ErrorBoundary>
+            <Suspense fallback={<LazzySpinner />}>
+              <Route exact path="/" component={HomePage} />
+              <Route path="/shop" component={ShopPage} />
+              <Route exact path="/checkout" component={CheckOutPage} />
+              <Route
+                exact
+                path="/sign-in"
+                render={() =>
+                  currentUser ? <Redirect to="/" /> : <SignInPage />
+                }
+              />
+              <Route exact path="/contact" component={ContactsPage} />
+            </Suspense>
+          </ErrorBoundary>
         </Switch>
       </AppMain>
       <Footer />

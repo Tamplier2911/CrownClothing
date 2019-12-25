@@ -5,6 +5,7 @@ import DirectoryMenu from "../../components/DirectoryMenu/DirectoryMenu";
 import { HomePageContainer } from "./HomePageStyles";
 
 const HomePage = () => {
+  // throw Error;
   return (
     <HomePageContainer>
       <DirectoryMenu />

@@ -1,4 +1,4 @@
-// import "./index.scss";
+import "./index.scss";
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
@@ -14,13 +14,13 @@ import { store, persistor } from "./redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
 // JS Rendered Styles
-import { GlobalStyle } from "./indexStyles";
+// import { GlobalStyle } from "./indexStyles";
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
-        <GlobalStyle />
+        {/* <GlobalStyle /> */}
         <App />
       </PersistGate>
     </BrowserRouter>

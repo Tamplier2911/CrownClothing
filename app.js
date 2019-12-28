@@ -1,4 +1,5 @@
 const express = require("express");
+const compression = require("compression");
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -15,6 +16,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // allows using cross-origin-requests
 app.use(cors());
+
+////////////////////////////////////////////////////////////////////////////////
+// compress all responsee bodies
+app.use(compression());
 
 if (process.env.NODE_ENV === "production") {
   // serving static files

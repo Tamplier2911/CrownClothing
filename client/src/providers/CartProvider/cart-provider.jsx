@@ -11,7 +11,7 @@ import {
 // First we create CartContext with initial state.
 
 // Then, creating CartProvider component, which is going to be HOC,
-// that going to laverage useState, as well useEffects, to watch for certain state changes.
+// that going to laverage useState, useEffects, to watch for certain state changes.
 // As well as provide some additational functionality methods and initialize updated value
 // for provider and wrap any provided children component into that provider.
 

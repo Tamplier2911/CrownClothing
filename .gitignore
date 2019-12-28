@@ -31,6 +31,13 @@ yarn-error.log*
 # api
 /client/src/environment.js
 
+# unnecessary loads for heroku
+# /client/apollo
+# /client/graphql
+# /client/optimization
+# /client/providers
+# /client/contexts
+
 #git rm -r --cached .
 #git add .
 #git commit -m "fixed untracked files"

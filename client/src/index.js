@@ -16,16 +16,12 @@ import { PersistGate } from "redux-persist/integration/react";
 // JS Rendered Styles
 // import { GlobalStyle } from "./indexStyles";
 
-// temporary
-import Parent from "./optimization/ComponentLevel/ComponentLevelOptimizationFuncClass";
-
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
       <PersistGate persistor={persistor}>
         {/* <GlobalStyle /> */}
         <App />
-        <Parent />
       </PersistGate>
     </BrowserRouter>
   </Provider>,

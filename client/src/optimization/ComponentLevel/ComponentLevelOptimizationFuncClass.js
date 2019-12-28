@@ -79,7 +79,9 @@ class Parent extends React.Component {
           Send Old State
         </button>
         <Person person={person} />
+        {/* <Person person={{ name: "Jack", age: 21 }} />  <--- will keep rerendering */}
         <Persone person={person} />
+        {/* <Persone person={{ name: "Jack", age: 21 }} /> <--- will keep rerendering*/}
         <button type="button" onClick={() => this.sendNewState()}>
           Send New State
         </button>
@@ -88,6 +90,11 @@ class Parent extends React.Component {
     );
   }
 }
+
+// Remember that if our object declaration will be static
+// JS will create new object every time parent component re-renders
+// so child component will be re-render no matter what, even React.memo & React.PureComponent
+// same ofcourse for arrays
 
 // FUNCTION MEMOIZATION
 

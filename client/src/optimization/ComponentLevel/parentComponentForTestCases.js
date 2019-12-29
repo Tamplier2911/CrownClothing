@@ -3,6 +3,7 @@ import React from "react";
 import MemoizedFunctionalComponent from "./reactMemo";
 import MemoizedClassComponent from "./reactPureComponent";
 import MemoizeCallback from "./useCallback";
+import MemoizedValue from "./useMemo";
 
 // Simple parent component with local state of person and count:
 
@@ -17,7 +18,8 @@ class Parent extends React.Component {
       count: 0,
       person: { name: "Billie", age: 21 },
       count1: 0,
-      count2: 0
+      count2: 0,
+      input: ""
     };
   }
 
@@ -79,10 +81,14 @@ class Parent extends React.Component {
 
   incrementCount1 = () => this.setState({ count1: this.state.count1 + 1 });
   incrementCount2 = () => this.setState({ count2: this.state.count2 + 1 });
-  logTest = () => console.log("Test");
+
+  onInputChange(e) {
+    const { name, value } = e.target;
+    this.setState({ [name]: Number(value) });
+  }
 
   render() {
-    const { person, count } = this.state;
+    const { person, count, count1, count2, input } = this.state;
     return (
       <div style={{ display: "flex", justifyContent: "center" }}>
         <button type="button" onClick={() => this.sendOldState()}>
@@ -100,9 +106,16 @@ class Parent extends React.Component {
         <MemoizeCallback
           counter1={this.incrementCount1}
           counter2={this.incrementCount2}
-          count1={this.state.count1}
-          count2={this.state.count2}
+          count1={count1}
+          count2={count2}
         />
+        <input
+          type="text"
+          name="input"
+          onChange={e => this.onInputChange(e)}
+          value={input}
+        ></input>
+        <MemoizedValue value={input} />
       </div>
     );
   }

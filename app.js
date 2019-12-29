@@ -17,7 +17,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // allows using cross-origin-requests
 app.use(cors());
 
-////////////////////////////////////////////////////////////////////////////////
 // compress all responsee bodies
 app.use(compression());
 

@@ -1,4 +1,8 @@
-import React, { useCallback } from "react";
+import React from "react";
+
+import MemoizedFunctionalComponent from "./reactMemo";
+import MemoizedClassComponent from "./reactPureComponent";
+import MemoizeCallback from "./useCallback";
 
 // Simple parent component with local state of person and count:
 
@@ -84,10 +88,10 @@ class Parent extends React.Component {
         <button type="button" onClick={() => this.sendOldState()}>
           Send Old State
         </button>
-        <Person person={person} />
-        {/* <Person person={{ name: "Jack", age: 21 }} />  <--- will keep rerendering */}
-        <Persone person={person} />
-        {/* <Persone person={{ name: "Jack", age: 21 }} /> <--- will keep rerendering*/}
+        <MemoizedFunctionalComponent person={person} />
+        {/* <MemoizedFunctionalComponent person={{ name: "Jack", age: 21 }} />  <--- will keep rerendering */}
+        <MemoizedClassComponent person={person} />
+        {/* <MemoizedClassComponent person={{ name: "Jack", age: 21 }} /> <--- will keep rerendering*/}
         <button type="button" onClick={() => this.sendNewState()}>
           Send New State
         </button>
@@ -108,6 +112,8 @@ class Parent extends React.Component {
 // JS will create new object every time parent component re-renders
 // so child component will be re-render no matter what, even React.memo & React.PureComponent
 // same ofcourse for arrays
+
+/*
 
 ///////////////////////////////// FUNCTION COMPONENT MEMOIZATION ////////////////////////////////////////
 
@@ -205,5 +211,6 @@ const MemoizeCallback = props => {
     </div>
   );
 };
+*/
 
 export default Parent;

@@ -14,6 +14,8 @@ export const GlobalStyle = createGlobalStyle`
     --cl-danger: #f88a8a;
     --cl-blue: #3a79f2;
     --cl-font: #333;
+    --bp-tablet: 48;
+    --bp-mobile: 26.563;
   }
   
   // BREAKPOINTS
@@ -42,9 +44,15 @@ export const GlobalStyle = createGlobalStyle`
     @media only screen and (max-width: $tablet) {
       font-size: 56.25%;
     }
+    @media only screen and (max-width: 48em) {
+      font-size: 56.25%;
+    }
   
     // 8px / 16 * 100 = 50%
     @media only screen and (max-width: $mobile) {
+      font-size: 50%;
+    }
+    @media only screen and (max-width: 26.563em) {
       font-size: 50%;
     }
   }

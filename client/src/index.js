@@ -3,6 +3,9 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 
+// srvice worker
+import * as serviceWorker from "./serviceWorker";
+
 // router
 import { BrowserRouter } from "react-router-dom";
 
@@ -27,3 +30,6 @@ ReactDOM.render(
   </Provider>,
   document.querySelector("#root")
 );
+
+// gergister service worker
+serviceWorker.register();

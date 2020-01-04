@@ -84,7 +84,7 @@ body {
 // FLOATS FOR GRACEFUL DEGRADATION
 
 @mixin clearfix {
-  :after {
+  ::after {
     display: table;
     content: "";
     clear: both;

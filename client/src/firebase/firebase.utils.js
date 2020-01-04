@@ -26,11 +26,39 @@ export const createUserProfileDocument = async (userAuth, additionalData) => {
       });
     } catch (err) {
       // Implement meaningful error handler.
-      alert("Something went wrong on user create! ", err.message);
+      alert("Something went wrong on user create!", err.message);
     }
   }
 
   return userRef;
+};
+
+export const getUserCartRef = async userId => {
+  // create request to all 'carts' in collection
+  // pick all where value of 'userId' equals userId that we passing as argument
+  const cartsRef = firestore.collection("carts").where("userId", "==", userId);
+  // console.log(cartsRef, "Carts Ref");
+
+  // get snapshot of carts by using .get() method on carts reference
+  const cartsSnapshot = await cartsRef.get();
+  // console.log(cartsSnapshot, "Cart Snapshot");
+
+  // if cartsSnapshort - collection snapshot, property empty is true
+  if (cartsSnapshot.empty) {
+    // get cart doc reference by using .doc() method
+    // which returns document reference with default id
+    const cartDocRef = firestore.collection("carts").doc();
+
+    // once we have card document reference we can perform CRUD operations
+    // perform creation of the new cart, with userId property & empty arr of items
+    await cartDocRef.set({ userId: userId, cartItems: [] });
+
+    // return cart doc reference
+    return cartDocRef;
+  } else {
+    // else if we actualy found a cart in cart collection return it reference
+    return cartsSnapshot.docs[0].ref;
+  }
 };
 
 export const addCollectionAndDocuments = async (

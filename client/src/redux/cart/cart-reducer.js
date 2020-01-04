@@ -6,7 +6,8 @@ const {
   ADD_ITEM,
   REMOVE_ITEM,
   DECREMENT_QUANTITY,
-  CLEAR_CART
+  CLEAR_CART,
+  SET_CART_FROM_FIREBASE //
 } = cartActionTypes;
 
 const INITIAL_STATE = {
@@ -40,6 +41,8 @@ const cartReducer = (state = INITIAL_STATE, action) => {
       };
     case CLEAR_CART:
       return { ...state, cartItems: [] };
+    case SET_CART_FROM_FIREBASE:
+      return { ...state, cartItems: action.payload };
     default:
       return state;
   }

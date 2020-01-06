@@ -56,11 +56,9 @@ export function* updateCartInFirebase() {
     try {
       // firest we getting cart reference using current user id
       const cartRef = yield getUserCartRef(currentUser.id);
-      console.log(cartRef, "cart reference objec - CRUD");
 
       // now using select effect in order to get back array of our current cart items
       const currentCart = yield select(selectCartItems);
-      console.log(currentCart, "current cart ");
 
       // using update method to perform update on cart items
       // replacing cart items that currently existing in firebase
@@ -70,8 +68,6 @@ export function* updateCartInFirebase() {
       alert("Something not quite right!", err.message);
     }
   }
-
-  yield console.log("Cart updated...", currentUser.id);
 }
 
 // listen for sign user in success action, invoke checkCartFromFirebase function once issued

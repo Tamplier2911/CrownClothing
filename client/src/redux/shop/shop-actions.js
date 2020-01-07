@@ -24,6 +24,10 @@ export const fetchCollectionsFailure = errorMessage => ({
   payload: errorMessage
 });
 
+/*
+
+// REDUX THUNK REFERENCES
+
 // No longer using this, was designed for thunk, but using saga now
 export const fetchCollectionsStartAsync = () => {
   return dispatch => {
@@ -46,3 +50,31 @@ export const fetchCollectionsStartAsync = () => {
       .catch(error => dispatch(fetchCollectionsFailure(error.message)));
   };
 };
+
+// Another Redux-Thunk syntax reference
+export const fetchCollectionsAsync = () => async dispatch => {
+  try {
+    const collectionRef = firestore.collection("collections");
+
+    dispatch(fetchCollectionsStart());
+
+    const collectionSnap = await collectionRef.get();
+    const collectionsMap = convertCollectionsSnapshotToMap(collectionSnap);
+
+    dispatch(fetchCollectionsSuccess(collectionsMap));
+  } catch (error) {
+    dispatch(fetchCollectionsFailure(error.message));
+  }
+};
+
+// Using Axios
+export const fetchCollectionsAxios = () => async dispatch => {
+  try {
+    const collection = await axios.get("/api/collection");
+    dispatch(fetchCollectionsSuccess(collection));
+  } catch (error) {
+    dispatch(fetchCollectionsFailure(error.message));
+  }
+};
+
+*/

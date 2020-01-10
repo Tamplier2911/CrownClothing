@@ -2,7 +2,7 @@ import TestComponent from "./componentTest";
 import React from "react";
 import { shallow, mount, render } from "enzyme";
 
-// SHALOW
+// SHALLOW
 describe("<TestComponent /> - shallow", () => {
   it("renders TestComponent", () => {
     expect(shallow(<TestComponent />).length).toEqual(1);

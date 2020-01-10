@@ -37,6 +37,7 @@ yarn-error.log*
 # /client/src/optimization
 # /client/src/providers
 # /client/src/contexts
+# /client/src/tests
 
 #git rm -r --cached .
 #git add .

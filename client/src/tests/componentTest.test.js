@@ -30,12 +30,34 @@ describe("<TestComponent /> - mount", () => {
 });
 
 // RENDER
-describe("render a div - render", () => {
+describe("<TestComponent /> - render", () => {
   it("test if div properly rendered", () => {
     const wrapper = render(<TestComponent />);
     expect(wrapper.hasClass()).toEqual(false);
   });
 });
+
+// Snapshot Testing
+describe("<TestComponent /> - shallow", () => {
+  it("expect component to match snapshot", () => {
+    expect(shallow(<TestComponent />)).toMatchSnapshot();
+  });
+});
+
+// Testing Stateful Component
+describe("<TestComponent /> - stateful", () => {
+  it("expect increment behaviour", () => {
+    const wrapper = shallow(<TestComponent />);
+
+    wrapper.find('[id="counter"]').simulate("click");
+    expect(wrapper.state()).toEqual({ counter: 1 });
+
+    wrapper.find('[id="counter"]').simulate("click");
+    expect(wrapper.state()).toEqual({ counter: 2 });
+  });
+});
+
+// https://github.com/sapegin/jest-cheat-sheet
 
 // https://github.com/airbnb/enzyme
 

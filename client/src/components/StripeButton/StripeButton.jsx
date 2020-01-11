@@ -8,7 +8,7 @@ import { StripeCheckoutButton } from "./StripeButtonStyles";
 // value represented in cents
 const StripeButton = ({ price }) => {
   const priceForStripe = price * 100;
-  const bulishebleKey = stripeApiKey;
+  const publishableKey = stripeApiKey;
 
   const onToken = async token => {
     try {
@@ -53,7 +53,7 @@ const StripeButton = ({ price }) => {
       amount={priceForStripe}
       panelLabel="Purchase"
       token={onToken}
-      stripeKey={bulishebleKey}
+      stripeKey={publishableKey}
       className="stripe"
     />
   );

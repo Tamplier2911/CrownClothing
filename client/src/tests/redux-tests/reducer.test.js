@@ -2,7 +2,7 @@ import { userReducer } from "./reducer";
 
 // TESTING REDUCERS
 describe("userReducer", () => {
-  it("testing for defaul case", () => {
+  it("testing for default case", () => {
     expect(userReducer(undefined, {})).toEqual({
       currentUser: null,
       errorMessage: null

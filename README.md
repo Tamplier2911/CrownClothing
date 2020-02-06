@@ -1,6 +1,6 @@
 # Crown Clothing
 
-React | Redux | E-commerce | GraphQL | Firebase and more...
+E-commerce platform React | Redux | Firebase | GraphQL and more...
 
 Crown Clothing is a online shop, created by Artem Nikolaiev, for React.js study porpuses.
 

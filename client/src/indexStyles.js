@@ -91,12 +91,17 @@ export const GlobalStyle = createGlobalStyle`
   
   // FLOATS FOR GRACEFUL DEGRADATION
   
-  @mixin clearfix {
-    :after {
-      display: table;
+  @mixin clearfix() {
+    &::after {
+      display: block;
       content: "";
       clear: both;
     }
   }
   
+  /*
+  .element {
+    @include clearfix;
+  }
+  */
 `;
